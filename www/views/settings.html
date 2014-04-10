@@ -1,0 +1,37 @@
+<ion-view title="Réglages">
+  <ion-content>
+    <ion-list>
+    	<label class="item item-input">
+		    <span class="input-label">Prénom</span>
+		    <input type="text" value="Jean Baptiste" disabled>
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Nom</span>
+		    <input type="text" value="La Buzz" disabled>
+		  </label>
+      <label class="item item-input">
+		    <span class="input-label">Voiture</span>
+		    <input type="text" name="car" placeholder="Renault C4">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Musique écoutée</span>
+		    <input type="text" name="music" placeholder="Electro">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">N° de chambre</span>
+		    <input type="number" name="room" placeholder="007" min="1">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Photo de profil</span>
+		    <a class="avatar">
+		    	<img src="http://lorempixel.com/50/50/people/" ng-click="showActionSheet()">
+		    </a>
+		  </label>
+    </ion-list>
+    		<div class="padding">
+			<button class="button button-block button-positive">
+		  	Enregistrer
+			</button>
+		</div>
+  </ion-content>
+</ion-view>
