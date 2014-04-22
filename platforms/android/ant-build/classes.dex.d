@@ -1,0 +1,21 @@
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes.dex : \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\ionicframework\starter\BuildConfig.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\ionicframework\starter\HelloCordova.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\ionicframework\starter\Manifest$permission.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\ionicframework\starter\Manifest.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\ionicframework\starter\R$attr.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\ionicframework\starter\R$drawable.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\ionicframework\starter\R$string.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\ionicframework\starter\R$xml.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\ionicframework\starter\R.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\plugin\gcm\CordovaGCMBroadcastReceiver.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\plugin\gcm\GCMIntentService.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\plugin\gcm\PushHandlerActivity.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\plugin\gcm\PushPlugin.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\org\apache\cordova\camera\CameraLauncher.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\org\apache\cordova\camera\ExifHelper.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\org\apache\cordova\camera\FileHelper.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\org\apache\cordova\device\Device.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\dexedLibs\classes-ea1a463e103c57a1503136ad42174280.jar \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\dexedLibs\gcm-7c40713ab8203259711cb5f712f92e3b.jar \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\dexedLibs\android-support-v13-a29c973ff87fe9453457d6c7e23e0b76.jar \

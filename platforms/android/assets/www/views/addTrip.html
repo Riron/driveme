@@ -1,0 +1,18 @@
+<ion-view title="Ajouter un voyage">
+  <ion-content>
+		<div class="list">
+		  <label class="item item-input">
+		    <span class="input-label">Direction</span>
+		    <input type="text" placeholder="Bourseul">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Nombre de places</span>
+		    <span class="padding-right">{{travellers}}</span><input type="range" name="volume" min="1" max="5" value="4" ng-model="travellers">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Horaire</span>
+		    <input type="text" placeholder="Bourseul">
+		  </label>
+		</div>
+	</ion-content>
+</ion-view>
