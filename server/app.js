@@ -1,23 +1,36 @@
+// Define server
 var express = require('express'),
   http = require('http');
 
 var app = module.exports = express();
+var bodyParser = require('body-parser');
 var server = require('http').createServer(app);
-var io = require('socket.io').listen(server);
 
-var notification = require('./notifications/notifications.js');
-
-// Store trips in a var for now
-var trips = [
-	{name: 'Orion', seats: '4', direction: 'Lahiure', time: '13h45'},
-	{name: 'JB Buzz', seats: '3', direction: 'Bourseul', time: '14h00'}
-];
-
-// Quand on client se connecte, on le note dans la console
-io.sockets.on('connection', function (socket) {
-    console.log('A new user is there, nice ;)');
-    socket.emit('init', trips);
+// MySQL
+var mysql      = require('mysql');
+var db = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : 'driveme'
 });
 
+db.connect();
 
+// configure app to use bodyParser()
+// this will let us get the data from a POST
+app.use(bodyParser());
+
+// load routes
+var router = require('./modules/routes')(express, db);
+// all of our routes will be prefixed with /api/v1
+app.use('/api/v1', router);
+
+// load sockets module
+require('./modules/socket')(server, db);
+
+// load notifications module
+require('./modules/notifications.js');
+
+// Listen on port 8080
 server.listen(8080);
