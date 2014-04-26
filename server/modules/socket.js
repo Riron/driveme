@@ -1,14 +1,11 @@
 var io = require('socket.io');
 
 // Store trips in a var for now
-var trips = [
-	{name: 'Orion', seats: '4', direction: 'Lahiure', time: '13h45'},
-	{name: 'JB Buzz', seats: '3', direction: 'Bourseul', time: '14h00'}
-];
+var trips = [];
 
 module.exports = function(server, db) {
 	var refreshTrips = function () {
-		db.query('SELECT * FROM trip LEFT JOIN user ON trip.user_id = user.id', function(err, rows) {
+		db.query('SELECT trip.id AS id, seats, direction, time, finished, username, picture FROM trip LEFT JOIN user ON trip.user_id = user.id', function(err, rows) {
 		  // connected! (unless `err` is set)
 		  if(err) {
 	  		console.log('Error : ' + err);
@@ -22,15 +19,15 @@ module.exports = function(server, db) {
 	io = io.listen(server);
 	refreshTrips();
 
-	io.sockets.on('refresh', function (socket) {
-		refreshTrips();
-	  socket.broadcast.emit('trip change', trips);
-	});
-
 	// Quand on client se connecte, on le note dans la console
 	io.sockets.on('connection', function (socket) {
-	    console.log('A new user is there, nice ;)');
-	    console.log(trips);
-	    socket.emit('init', trips);
+	    console.log('A new user is there, welcome !');
+	    socket.on('get trips', function (data) {
+			  socket.emit('update', trips);
+			});
+			socket.on('trip added', function () {
+				refreshTrips();
+				socket.broadcast.emit('update', trips);
+			})
 	});
 }
