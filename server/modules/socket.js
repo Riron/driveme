@@ -22,9 +22,15 @@ module.exports = function(server, db) {
 	// Socket handling
 	io.sockets.on('connection', function (socket) {
 	    console.log('A new user is there, welcome !');
+
 	    socket.on('get trips', function (data) {
 			  socket.emit('update', trips);
 			});
+
+			socket.on('participant change', function (data) {
+			  socket.broadcast.emit('update participants', data);
+			});
+
 			socket.on('trip added', function () {
 				refreshTrips();
 				socket.broadcast.emit('update', trips);
