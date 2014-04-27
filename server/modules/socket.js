@@ -19,7 +19,7 @@ module.exports = function(server, db) {
 	io = io.listen(server);
 	refreshTrips();
 
-	// Quand on client se connecte, on le note dans la console
+	// Socket handling
 	io.sockets.on('connection', function (socket) {
 	    console.log('A new user is there, welcome !');
 	    socket.on('get trips', function (data) {

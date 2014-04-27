@@ -18,7 +18,7 @@ module.exports = function (express, db) {
 	// Trips
 	router.route('/trips')
 		.get(function (req, res) {
-			db.query('SELECT * FROM trip', function(err, rows) {
+			db.query('SELECT * FROM trip WHERE finished = 0', function(err, rows) {
 				if(err) {
 					res.send(err);
 					throw err;
@@ -65,6 +65,38 @@ module.exports = function (express, db) {
 					throw err;
 				}
 				res.json({ message: 'Trip deleted!' });
+			});
+		});
+
+	// Users associated with a trip (not driver)
+	router.route('/trips/:trip_id/users')
+		.get(function (req, res) {
+			db.query('SELECT user.username AS username, user.id AS id, user.picture AS picture FROM user_trip LEFT JOIN user ON user_trip.user_id = user.id WHERE user_trip.trip_id =' + req.params.trip_id, function(err, rows) {
+				if(err) {
+					res.send(err);
+					throw err;
+				}
+				res.json(rows);
+			});
+		})
+		.post(function (req, res) {
+			var query = 'INSERT INTO user_trip VALUES("", ' + req.body.user_id + ', "'+ req.body.trip_id + '")';
+			db.query(query, function(err, rows) {
+				if(err) {
+					res.send(err);
+					throw err;
+				}
+				res.json({ message: 'User added to trip!' });
+			});
+		})
+		.delete(function (req, res) {
+			var query = 'DELETE FROM user_trip WHERE user_id = ' + req.query.user_id  + ' AND trip_id = ' + req.query.trip_id;
+			db.query(query, function(err, rows) {
+				if(err) {
+					res.send(err);
+					throw err;
+				}
+				res.json({ message: 'User deleted from trip!' });
 			});
 		});
 
