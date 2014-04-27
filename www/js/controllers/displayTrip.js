@@ -1,5 +1,5 @@
 angular.module('driveme')
-  .controller('DisplayTripCtrl', ['$scope', '$stateParams'; 'Restangular', '$localStorage', 'socketService', function ($scope, $stateParams, Restangular, $localStorage, socket) {
+  .controller('DisplayTripCtrl', ['$scope', '$stateParams', 'Restangular', '$localStorage', 'socketService', function ($scope, $stateParams, Restangular, $localStorage, socket) {
     $scope.id = $stateParams.id;
     $scope.participants = [];
     $scope.in = true
