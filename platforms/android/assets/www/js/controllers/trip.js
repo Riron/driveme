@@ -2,13 +2,8 @@ angular.module('driveme')
   .controller('TripCtrl', ['$scope', 'socketService', function ($scope, socket) {
     $scope.trips = [];
 
-    socket.on('init', function (data) {
+    socket.emit('get trips', {update: true});
+    socket.on('update', function (data) {
     	$scope.trips = data;
-    	console.log(data);
-    });
-
-    socket.on('newTrip', function (trip) {
-
-    	$scope.trips.push(trip);
     });
   }]);
