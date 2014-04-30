@@ -30,6 +30,6 @@
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
     <icon src="icon.png" />
+    <preference name="SplashScreen" value="splash" />
     <preference name="splash-screen-duration" value="3000" />
-    <gap:splash src="splash.png" />
 </widget>

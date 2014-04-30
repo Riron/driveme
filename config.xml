@@ -21,6 +21,6 @@
     <icon src="icon.png" />
 
     <!-- Define app splash screen -->
-    <preference name="splash-screen-duration" value="3000"/>
-    <gap:splash src="splash.png" />
+    <preference name="SplashScreen" value="splash" />
+    <preference name="splash-screen-duration" value="4000"/>
 </widget>

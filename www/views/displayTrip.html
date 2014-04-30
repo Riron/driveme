@@ -11,7 +11,7 @@
 		  </div>
 		</div>
 
-		<div class="list">
+		<div class="card">
 		  <div class="item item-divider">
 		    Inscrits à cette voiture
 		  </div>
@@ -19,6 +19,16 @@
 		  	Personne n'a demandé à participer à ce voyage
 		  </li>
 		  <a class="item item-avatar" ng-repeat="participant in participants" ng-show="participants.length > 0" ui-sref="tabs.trip">
+	      <img ng-src="{{participant.picture}}">
+	      <h2>{{participant.username}} est inscrit</h2>
+	    </a>
+		</div>
+
+		<div class="card" ng-show="participants.length > trip.seats">
+		  <div class="item item-divider">
+		    Sur liste d'attente
+		  </div>
+		  <a class="item item-avatar" ng-repeat="participant in participants" ng-show="$index > trip.seats" ui-sref="tabs.trip">
 	      <img ng-src="{{participant.picture}}">
 	      <h2>{{participant.username}} est inscrit</h2>
 	    </a>
