@@ -12,6 +12,15 @@ D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\plugin\
 D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\plugin\gcm\GCMIntentService.class \
 D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\plugin\gcm\PushHandlerActivity.class \
 D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\plugin\gcm\PushPlugin.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\fr\peaches\mines\douai\driveme\BuildConfig.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\fr\peaches\mines\douai\driveme\HelloCordova.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\fr\peaches\mines\douai\driveme\Manifest$permission.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\fr\peaches\mines\douai\driveme\Manifest.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\fr\peaches\mines\douai\driveme\R$attr.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\fr\peaches\mines\douai\driveme\R$drawable.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\fr\peaches\mines\douai\driveme\R$string.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\fr\peaches\mines\douai\driveme\R$xml.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\fr\peaches\mines\douai\driveme\R.class \
 D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\org\apache\cordova\camera\CameraLauncher.class \
 D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\org\apache\cordova\camera\ExifHelper.class \
 D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\org\apache\cordova\camera\FileHelper.class \

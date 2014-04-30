@@ -3,16 +3,22 @@
 		<div class="list">
 		  <label class="item item-input">
 		    <span class="input-label">Direction</span>
-		    <input type="text" placeholder="Bourseul">
+		    <input type="text" ng-model="trip.direction" placeholder="Bourseul">
 		  </label>
 		  <label class="item item-input">
 		    <span class="input-label">Nombre de places</span>
-		    <span class="padding-right">{{travellers}}</span><input type="range" name="volume" min="1" max="5" value="4" ng-model="travellers">
+		    <span class="padding-right">{{trip.seats}}</span><input type="range" name="volume" min="1" max="5" value="4" ng-model="trip.seats">
 		  </label>
 		  <label class="item item-input">
 		    <span class="input-label">Horaire</span>
-		    <input type="text" placeholder="Bourseul">
+		    <input type="time" placeholder="Bourseul">
 		  </label>
+		</div>
+
+		<div class="padding">
+			<button class="button button-block button-positive" ng-click="addTrip()">
+		  	Ajouter mon trajet
+			</button>
 		</div>
 	</ion-content>
 </ion-view>

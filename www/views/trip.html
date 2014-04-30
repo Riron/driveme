@@ -7,7 +7,7 @@
 		  <li class="item" ng-show="trips.length === 0">
 		  	Aucune voiture disponible actuellement...
 		  </li>
-		  <a class="item item-avatar" ng-repeat="trip in trips" ng-show="trips.length > 0">
+		  <a class="item item-avatar" ng-repeat="trip in trips" ng-show="trips.length > 0" ui-sref="tabs.displayTrip({id: trip.id})">
 	      <img src="http://lorempixel.com/100/100/people/">
 	      <h2>Départ pour <strong>{{trip.direction}}</strong> - {{trip.time}}</h2>
 	      <p>{{trip.username}} a {{trip.seats}} places</p>

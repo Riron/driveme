@@ -5,12 +5,20 @@ module.exports = function (express, db) {
 	router.use(function (req, res, next) {
 		// do logging
 		console.log('Something is happening.');
-		next(); // make sure we go to the next routes and don't stop here
+		// If method type is OPTIONS, return OK
+		res.set({'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, X-Access-Token'})
+		if(req.method == 'options') {
+			res.json({ options: 'OK' });
+		}
+		else {
+			next(); // make sure we go to the next routes and don't stop here
+		}
 	});
 
+	// Trips
 	router.route('/trips')
 		.get(function (req, res) {
-			db.query('SELECT * FROM trip', function(err, rows) {
+			db.query('SELECT * FROM trip WHERE finished = 0', function(err, rows) {
 				if(err) {
 					res.send(err);
 					throw err;
@@ -19,7 +27,7 @@ module.exports = function (express, db) {
 			});
 		})
 		.post(function (req, res) {
-			var query = 'INSERT INTO trip VALUES("", 1, "'+ req.body.seats + '","' + req.body.direction + '","' + req.body.time + '", 0)';
+			var query = 'INSERT INTO trip VALUES("", ' + req.body.user_id + ', "'+ req.body.seats + '","' + req.body.direction + '","' + req.body.time + '", 0)';
 			db.query(query, function(err, rows) {
 				if(err) {
 					res.send(err);
@@ -29,9 +37,10 @@ module.exports = function (express, db) {
 			});
 		});
 
+	// Single trip
 	router.route('/trips/:trip_id')
 		.get(function (req, res) {
-			db.query('SELECT * FROM trip WHERE id=' + req.params.trip_id, function(err, rows) {
+			db.query('SELECT trip.id AS id, seats, direction, time, finished, username, car, musicType, promo, room, picture FROM trip LEFT JOIN user ON trip.user_id = user.id WHERE trip.id=' + req.params.trip_id, function(err, rows) {
 				if(err) {
 					res.send(err);
 					throw err;
@@ -50,7 +59,7 @@ module.exports = function (express, db) {
 			});
 		})
 		.delete(function (req, res) {
-			db.query('DELETE FROM trip WHERE id=' + req.params.trip_id, function(err, rows) {
+			db.query('DELETE FROM trip WHERE id =' + req.params.trip_id, function(err, rows) {
 				if(err) {
 					res.send(err);
 					throw err;
@@ -59,9 +68,10 @@ module.exports = function (express, db) {
 			});
 		});
 
-	router.route('/users')
+	// Users associated with a trip (not driver)
+	router.route('/trips/:trip_id/users')
 		.get(function (req, res) {
-			db.query('SELECT * FROM users', function(err, rows) {
+			db.query('SELECT user.username AS username, user.id AS id, user.picture AS picture FROM user_trip LEFT JOIN user ON user_trip.user_id = user.id WHERE user_trip.trip_id =' + req.params.trip_id, function(err, rows) {
 				if(err) {
 					res.send(err);
 					throw err;
@@ -70,24 +80,80 @@ module.exports = function (express, db) {
 			});
 		})
 		.post(function (req, res) {
-			var query = 'INSERT INTO user VALUES("", )';
+			var query = 'INSERT INTO user_trip VALUES("", ' + req.body.user_id + ', "'+ req.body.trip_id + '")';
 			db.query(query, function(err, rows) {
+				if(err) {
+					res.send(err);
+					throw err;
+				}
+				res.json({ message: 'User added to trip!' });
+			});
+		})
+		.delete(function (req, res) {
+			var query = 'DELETE FROM user_trip WHERE user_id = ' + req.query.user_id  + ' AND trip_id = ' + req.query.trip_id;
+			db.query(query, function(err, rows) {
+				if(err) {
+					res.send(err);
+					throw err;
+				}
+				res.json({ message: 'User deleted from trip!' });
+			});
+		});
+
+	// Users
+	router.route('/users')
+		.get(function (req, res) {
+			db.query('SELECT * FROM user', function(err, rows) {
 				if(err) {
 					res.send(err);
 					throw err;
 				}
 				res.json(rows);
 			});
+		})
+		.post(function (req, res) {
+			var query = 'INSERT INTO user VALUES("", "' + req.body.username + '", "' + req.body.password + '", "' + req.body.email + '", "' + req.body.car + '", "' + req.body.musicType + '", "' + req.body.promo + '", "' + req.body.room + '", "' + req.body.picture + '")';
+			db.query(query, function(err, rows) {
+				if(err) {
+					res.send(err);
+					throw err;
+				}
+				res.json({ message: 'User created!' });
+			});
 		});
 
+	// Single user
 	router.route('/users/:user_id')
 		.get(function (req, res) {
+			db.query('SELECT * FROM user WHERE id =' + req.params.user_id, function(err, rows) {
+				if(err) {
+					res.send(err);
+					throw err;
+				}
+				res.json(rows);
+			});
 		})
 		.put(function (req, res) {
+			var query = 'UPDATE user SET musicType = ' + req.body.musicType + ' WHERE id =' + req.params.user_id;
+			db.query(query, function(err, rows) {
+				if(err) {
+					res.send(err);
+					throw err;
+				}
+				res.json({ message: 'User updated!' });
+			});
 		})
 		.delete(function (req, res) {
+			db.query('DELETE FROM user WHERE id =' + req.params.user_id, function(err, rows) {
+				if(err) {
+					res.send(err);
+					throw err;
+				}
+				res.json({ message: 'User deleted!' });
+			});
 		});
 
+	// Single users's tags
 	router.route('/users/:user_id/tags')
 		.get(function (req, res) {
 		})

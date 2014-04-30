@@ -1,0 +1,43 @@
+<ion-view title="Détail du trajet">
+  <ion-content>
+	  <div class="card">
+		  <div class="item item-divider">
+		    Départ pour {{trip.direction}}
+		  </div>
+		  <div class="item item-avatar">
+		    <img ng-src="{{trip.picture}}">
+		    <h2>Voiture de {{trip.username}}</h2>
+		    <p>{{trip.seats}} places proposées</p>
+		  </div>
+		</div>
+
+		<div class="card">
+		  <div class="item item-divider">
+		    Inscrits à cette voiture
+		  </div>
+		  <li class="item" ng-show="participants.length === 0">
+		  	Personne n'a demandé à participer à ce voyage
+		  </li>
+		  <a class="item item-avatar" ng-repeat="participant in participants" ng-show="participants.length > 0" ui-sref="tabs.trip">
+	      <img ng-src="{{participant.picture}}">
+	      <h2>{{participant.username}} est inscrit</h2>
+	    </a>
+		</div>
+
+		<div class="card" ng-show="participants.length > trip.seats">
+		  <div class="item item-divider">
+		    Sur liste d'attente
+		  </div>
+		  <a class="item item-avatar" ng-repeat="participant in participants" ng-show="$index > trip.seats" ui-sref="tabs.trip">
+	      <img ng-src="{{participant.picture}}">
+	      <h2>{{participant.username}} est inscrit</h2>
+	    </a>
+		</div>
+
+		<div class="padding">
+			<button class="button button-block button-positive" ng-click="participate()">
+		  	{{button_text}}
+			</button>
+		</div>
+  </ion-content>
+</ion-view>

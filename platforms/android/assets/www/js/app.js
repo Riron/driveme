@@ -13,7 +13,10 @@ angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
   // Init api service to place token in HTTP headers
   apiService.init();
 })
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
+  // Configure Restangular base route
+  RestangularProvider.setBaseUrl('http://localhost:8080/api/v1');
+
 	// Configure routes
 	$stateProvider.state('signin', {
     url: "/sign-in",
@@ -58,6 +61,15 @@ angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
       'trip-tab': {
         templateUrl: 'views/addTrip.html',
         controller: 'AddTripCtrl'
+      }
+    }
+  })
+  .state('tabs.displayTrip', {
+    url: '/trip/{id:[0-9]{1,8}}',
+    views: {
+      'trip-tab': {
+        templateUrl: 'views/displayTrip.html',
+        controller: 'DisplayTripCtrl'
       }
     }
   })

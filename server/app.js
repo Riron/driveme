@@ -32,5 +32,21 @@ require('./modules/socket')(server, db);
 // load notifications module
 require('./modules/notifications.js');
 
+// Every minute, check for finished trips
+setInterval(function () {
+	// Check trip time. If < NOW, swotch to finish
+	db.query('SELECT * FROM trip WHERE time < NOW() AND finished = 0', function (err, rows) {
+		if(err) {
+			res.send(err);
+			throw err;
+		}
+		rows.forEach(function (row) {
+			db.query('UPDATE trip SET finished = 1 WHERE id =' + row.id, function (err, row) {
+				console.log('A trip has been set to finished')
+			})
+		});
+	})
+}, 3600);
+
 // Listen on port 8080
 server.listen(8080);

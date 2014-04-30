@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="fr.peaches.mines.douai.driveme" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>DriveMe</name>
     <description>
-        An Ionic Framework and Cordova project.
+        Conçu pour faciliter la vie des étudiants des Mines Douai.
     </description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">
+    <author email="peaches@gmail.com" href="http://peaches.com/">
       Made by Peaches, with love
     </author>
     <content src="index.html" />
@@ -16,4 +16,11 @@
     <feature name="StatusBar">
       <param name="ios-package" value="CDVStatusBar" onload="true" />
     </feature>
+
+    <!-- Define app icon -->
+    <icon src="icon.png" />
+
+    <!-- Define app splash screen -->
+    <preference name="SplashScreen" value="splash" />
+    <preference name="splash-screen-duration" value="4000"/>
 </widget>
