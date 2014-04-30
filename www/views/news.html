@@ -2,12 +2,13 @@
   <ion-content>
 	  <ion-refresher
 	    pulling-text="Pull to refresh..."
-	    on-refresh="refreshNews()">
+	    on-refresh="fetchNews()">
 	  </ion-refresher>
 	  <ion-list>
-	      <ion-item ng-repeat="article in articles" ui-sref="tabs.article({id: article.id})">
-	      	<h2>{{article.title}}</h2>
-	      	<p>{{article.content}}</p>
+	      <ion-item ng-repeat="article in articles" ui-sref="tabs.article({id: article.id})" class="item-thumbnail-left">
+		      <img ng-src="{{article.picture}}">
+		      <h2>{{article.title}}</h2>
+		      <p>Publié le {{article.date | date : short}}</p>
 	      </ion-item>
 	   </ion-list>
 	</ion-content>

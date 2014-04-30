@@ -1,5 +1,7 @@
 <ion-view title="Article">
   <ion-content padding="true">
-    <p>Affichage de l'article {{id}}</p>
+  	<h1>{{article.title}}</h1>
+  	<h4>Publié le {{article.date | date : 'd MMM yy'}}</h4>
+    <p>{{article.content}}</p>
   </ion-content>
 </ion-view>
