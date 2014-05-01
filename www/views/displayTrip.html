@@ -4,11 +4,11 @@
 		  <div class="item item-divider">
 		    Départ pour {{trip.direction}}
 		  </div>
-		  <div class="item item-avatar">
+		  <a class="item item-avatar" ui-sref="tabs.user({id: trip.user_id})">
 		    <img ng-src="{{trip.picture}}">
 		    <h2>Voiture de {{trip.username}}</h2>
 		    <p>{{trip.seats}} places proposées</p>
-		  </div>
+		  </a>
 		</div>
 
 		<div class="card">

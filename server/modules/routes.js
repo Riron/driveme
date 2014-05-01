@@ -40,7 +40,7 @@ module.exports = function (express, db) {
 	// Single trip
 	router.route('/trips/:trip_id')
 		.get(function (req, res) {
-			db.query('SELECT trip.id AS id, seats, direction, time, finished, username, car, musicType, promo, room, picture FROM trip LEFT JOIN user ON trip.user_id = user.id WHERE trip.id=' + req.params.trip_id, function(err, rows) {
+			db.query('SELECT trip.id AS id, user.id AS user_id, seats, direction, time, finished, username, car, musicType, promo, room, picture FROM trip LEFT JOIN user ON trip.user_id = user.id WHERE trip.id=' + req.params.trip_id, function(err, rows) {
 				if(err) {
 					res.send(err);
 					throw err;
