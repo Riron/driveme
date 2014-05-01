@@ -166,5 +166,27 @@ module.exports = function (express, db) {
 		.post(function (req, res) {
 		});
 
+	router.route('/news')
+		.get(function (req, res) {
+			db.query('SELECT id, title, date, picture FROM news LIMIT 10', function(err, rows) {
+				if(err) {
+					res.send(err);
+					throw err;
+				}
+				res.json(rows);
+			});
+		});
+
+	router.route('/news/:news_id')
+		.get(function (req, res) {
+			db.query('SELECT * FROM news WHERE id =' + req.params.news_id, function(err, rows) {
+				if(err) {
+					res.send(err);
+					throw err;
+				}
+				res.json(rows);
+			});
+		});
+
 	return router;
 }
