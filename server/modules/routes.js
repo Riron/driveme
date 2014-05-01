@@ -134,7 +134,8 @@ module.exports = function (express, db) {
 			});
 		})
 		.put(function (req, res) {
-			var query = 'UPDATE user SET musicType = ' + req.body.musicType + ' WHERE id =' + req.params.user_id;
+			var query = 'UPDATE user SET picture = "' + req.body.picture + '", promo = "' + req.body.promo + '", room = "' + req.body.room + '", phone = "' + req.body.phone + '", car = "' + req.body.car + '", musicType = "' + req.body.musicType + '" WHERE id =' + req.params.user_id;
+			console.log(query);
 			db.query(query, function(err, rows) {
 				if(err) {
 					res.send(err);
