@@ -5,7 +5,7 @@
 	    on-refresh="fetchNews()">
 	  </ion-refresher>
 	  <ion-list>
-	      <ion-item ng-repeat="article in articles" ui-sref="tabs.article({id: article.id})" class="item-thumbnail-left">
+	      <ion-item ng-repeat="article in articles" ui-sref="tabs.article({id: article.id})" class="item-avatar">
 		      <img ng-src="{{article.picture}}">
 		      <h2>{{article.title}}</h2>
 		      <p>Publié le {{article.date | date : short}}</p>
