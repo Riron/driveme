@@ -1,0 +1,45 @@
+<ion-view title="{{user.username}}">
+  <ion-content padding="true">
+	  <div class="row">
+	  	<div class="col">
+	  		<img ng-src="{{user.picture}}" alt="">
+	  	</div>
+	  	<div class="col">
+	  		<h4>{{user.username}}</h4>
+	  		<p>Promo {{user.promo}}</p>
+	  	</div>
+	  </div>
+  	
+  	<div class="list card">
+  		<div class="item item-icon-left" href="#">
+		    <i class="icon ion-email"></i>
+		    <h2>Adresse email</h2>
+    		<p>{{user.email}}</p>
+		  </div>
+		  <div class="item item-icon-left" href="#">
+		    <i class="icon ion-headphone"></i>
+		    <h2>Musique écoutée</h2>
+    		<p>{{user.musicType}}</p>
+		  </div>
+		  <div class="item item-icon-left" href="#">
+		    <i class="icon ion-location"></i>
+		    <h2>Chambre</h2>
+    		<p>{{user.room}}</p>
+		  </div>
+		  <div class="item item-icon-left" href="#">
+		    <i class="icon ion-model-s"></i>
+		    <h2>Voiture</h2>
+    		<p>{{user.car}}</p>
+		  </div>
+		  <div class="item item-icon-left" href="#">
+		    <i class="icon ion-android-call"></i>
+		    <h2>Numéro de téléphone</h2>
+    		<p>{{user.phone}}</p>
+		  </div>
+		</div>
+
+		<button class="button button-block button-positive" ui-sref="tabs.settings" ng-show="edit">
+		  	Editer mon profil
+		</button>
+  </ion-content>
+</ion-view>

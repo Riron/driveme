@@ -40,7 +40,7 @@ module.exports = function (express, db) {
 	// Single trip
 	router.route('/trips/:trip_id')
 		.get(function (req, res) {
-			db.query('SELECT trip.id AS id, seats, direction, time, finished, username, car, musicType, promo, room, picture FROM trip LEFT JOIN user ON trip.user_id = user.id WHERE trip.id=' + req.params.trip_id, function(err, rows) {
+			db.query('SELECT trip.id AS id, user.id AS user_id, seats, direction, time, finished, username, car, musicType, promo, room, picture FROM trip LEFT JOIN user ON trip.user_id = user.id WHERE trip.id=' + req.params.trip_id, function(err, rows) {
 				if(err) {
 					res.send(err);
 					throw err;
@@ -134,7 +134,8 @@ module.exports = function (express, db) {
 			});
 		})
 		.put(function (req, res) {
-			var query = 'UPDATE user SET musicType = ' + req.body.musicType + ' WHERE id =' + req.params.user_id;
+			var query = 'UPDATE user SET picture = "' + req.body.picture + '", promo = "' + req.body.promo + '", room = "' + req.body.room + '", phone = "' + req.body.phone + '", car = "' + req.body.car + '", musicType = "' + req.body.musicType + '" WHERE id =' + req.params.user_id;
+			console.log(query);
 			db.query(query, function(err, rows) {
 				if(err) {
 					res.send(err);

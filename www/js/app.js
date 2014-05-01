@@ -73,6 +73,24 @@ angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
       }
     }
   })
+  .state('tabs.profile', {
+    url: '/profile',
+    views: {
+      'settings-tab': {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
+      }
+    }
+  })
+  .state('tabs.user', {
+    url: '/profile/{id:[0-9]{1,8}}',
+    views: {
+      'trip-tab': {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
+      }
+    }
+  })
   .state('tabs.settings', {
     url: '/settings',
     views: {
