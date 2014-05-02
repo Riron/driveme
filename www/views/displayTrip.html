@@ -21,16 +21,8 @@
 		  <a class="item item-avatar" ng-repeat="participant in participants" ng-show="participants.length > 0" ui-sref="tabs.trip">
 	      <img ng-src="{{participant.picture}}">
 	      <h2>{{participant.username}} est inscrit</h2>
-	    </a>
-		</div>
-
-		<div class="card" ng-show="participants.length > trip.seats">
-		  <div class="item item-divider">
-		    Sur liste d'attente
-		  </div>
-		  <a class="item item-avatar" ng-repeat="participant in participants" ng-show="$index > trip.seats" ui-sref="tabs.trip">
-	      <img ng-src="{{participant.picture}}">
-	      <h2>{{participant.username}} est inscrit</h2>
+	      <span class="badge badge-balanced" ng-show="$index <= trip.seats"><i class="ion-checkmark-round"></i></span>
+	      <span class="item-note" ng-show="$index > trip.seats">Sur liste d'attente</span>
 	    </a>
 		</div>
 
