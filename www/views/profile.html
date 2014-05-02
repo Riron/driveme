@@ -11,30 +11,30 @@
 	  </div>
   	
   	<div class="list card">
-  		<div class="item item-icon-left" href="#">
+  		<div class="item item-icon-left">
 		    <i class="icon ion-email"></i>
 		    <h2>Adresse email</h2>
     		<p>{{user.email}}</p>
 		  </div>
-		  <div class="item item-icon-left" href="#">
+		  <div class="item item-icon-left">
 		    <i class="icon ion-headphone"></i>
 		    <h2>Musique écoutée</h2>
     		<p>{{user.musicType}}</p>
 		  </div>
-		  <div class="item item-icon-left" href="#">
+		  <div class="item item-icon-left">
 		    <i class="icon ion-location"></i>
 		    <h2>Chambre</h2>
     		<p>{{user.room}}</p>
 		  </div>
-		  <div class="item item-icon-left" href="#">
+		  <div class="item item-icon-left">
 		    <i class="icon ion-model-s"></i>
 		    <h2>Voiture</h2>
     		<p>{{user.car}}</p>
 		  </div>
-		  <div class="item item-icon-left" href="#">
+		  <div class="item item-icon-left" ng-click="dial(user.phone)">
 		    <i class="icon ion-android-call"></i>
 		    <h2>Numéro de téléphone</h2>
-    		<p>{{user.phone}}</p>
+    		<p>{{user.phone}} - Cliquez pour appeler</p>
 		  </div>
 		</div>
 

@@ -1,5 +1,5 @@
 angular.module('driveme')
-  .controller('ProfileCtrl', function ($scope, $stateParams, Restangular, $localStorage, $filter) {
+  .controller('ProfileCtrl', function ($scope, $stateParams, Restangular, $localStorage, $filter, $window) {
 
 	  $scope.getUserInfo = function () {
 	  	if(typeof $stateParams.id == 'undefined') {
@@ -15,4 +15,8 @@ angular.module('driveme')
 	  }
 
 	  $scope.getUserInfo();
+
+	  $scope.dial = function (number) {
+	  	$window.location.href = "tel:" + number; 
+	  }
   });
