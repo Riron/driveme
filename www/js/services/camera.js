@@ -45,7 +45,7 @@ angular.module('driveme')
         options.mimeType = "image/jpeg";
         options.params = {}; // if we need to send parameters to the server request
         var ft = new FileTransfer();
-        ft.upload(fileURI, encodeURI("http://localhost:8080/api/v1/uploads"), win, fail, options);
+        ft.upload(fileURI, encodeURI("http://localhost:8080/api/v1/upload"), win, fail, options);
 
         var win = function (r) {
           clearCache();

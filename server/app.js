@@ -4,6 +4,7 @@ var express = require('express'),
 
 var app = module.exports = express();
 var bodyParser = require('body-parser');
+var busboy = require('connect-busboy')
 var server = require('http').createServer(app);
 
 // MySQL
@@ -17,6 +18,7 @@ var db = mysql.createConnection({
 
 db.connect();
 
+app.use(busboy());
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser());
