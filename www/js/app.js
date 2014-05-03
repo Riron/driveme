@@ -13,7 +13,10 @@ angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
   // Init api service to place token in HTTP headers
   apiService.init();
 })
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
+  // Configure Restangular base route
+  RestangularProvider.setBaseUrl('http://localhost:8080/api/v1');
+  
 	// Configure routes
 	$stateProvider.state('login', {
     url: "/login",
