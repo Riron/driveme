@@ -20,6 +20,7 @@ angular.module('driveme')
 						cameraService.getPicture(function(imageURI) {
 							console.log('Galery :' + imageURI);
 							$scope.profilePicture = imageURI;
+							cameraService.upload(imageURI);
 						}, function(error) {
 							console.log(error);
 						}, {sourceType: Camera.PictureSourceType.PHOTOLIBRARY});
