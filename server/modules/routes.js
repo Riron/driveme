@@ -201,6 +201,7 @@ module.exports = function (express, db) {
 	        file.pipe(fstream);
 	        fstream.on('close', function () {
 	            res.send('File uploaded : ' + filename);
+	            console.log('File uploaded : ' + filename);
 	        });
 	    });
 		});
