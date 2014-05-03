@@ -1,4 +1,4 @@
-module.exports = function (express, db) {
+module.exports = function (express, db, app) {
 	var router = express.Router();
 
 	// middleware to use for all requests
@@ -7,6 +7,7 @@ module.exports = function (express, db) {
 		console.log('Something is happening.');
 		// If method type is OPTIONS, return OK
 		res.set({'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, X-Access-Token'})
+		if(req.url != '/login') { app.validate(req, res, next); }
 		if(req.method == 'options') {
 			res.json({ options: 'OK' });
 		}
@@ -36,6 +37,28 @@ module.exports = function (express, db) {
 				res.json({ message: 'Trip created!' });
 			});
 		});
+
+	router.route('/login')
+	.post(function (req, res) {
+
+		console.log('log start');
+		var query = 'SELECT id FROM user WHERE username ='+ db.escape(req.body.login) +' and password = '+ db.escape(req.body.password);
+		console.log(query);
+		db.query(query, function(err, rows) {
+			if(err) {
+				res.send(err);
+				throw err;
+			}
+			else if(rows.length === 1){
+				var token = app.generateToken(rows[0].id);
+				console.log(token);
+				res.json({token: token})
+			}
+			else{
+				res.json({error:'KO'});
+			}
+		});
+	});
 
 	// Single trip
 	router.route('/trips/:trip_id')

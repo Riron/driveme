@@ -10,8 +10,8 @@ angular.module('driveme')
 
 		return {
 			isLogged: function() {
-        return user.isLogged;
-      },
+        		return user.isLogged;
+      		},
 			login: function (credentials) {
 				// Login here
 			},

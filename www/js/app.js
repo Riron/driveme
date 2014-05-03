@@ -16,12 +16,22 @@ angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
 .config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
   // Configure Restangular base route
   RestangularProvider.setBaseUrl('http://localhost:8080/api/v1');
-
+  
 	// Configure routes
-	$stateProvider.state('signin', {
-    url: "/sign-in",
-    templateUrl: "views/sign-in.html",
-    controller: 'SignInCtrl'
+	$stateProvider.state('login', {
+    url: "/login",
+    templateUrl: "views/login.html",
+    controller: 'LogInCtrl'
+  })
+  .state('start', {
+    url: "/start",
+    templateUrl: "views/start.html",
+    controller: 'StartCtrl'
+  })
+  .state('signup', {
+    url: "/signup",
+    templateUrl: "views/signup.html",
+    controller: 'SignUpCtrl'
   })
 	.state('tabs', {
     url: "/tabs",
@@ -101,5 +111,5 @@ angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
     }
   });
   // If unknown route, redirect to sign-in
-  $urlRouterProvider.otherwise("/sign-in");
+  $urlRouterProvider.otherwise("/start");
 })
