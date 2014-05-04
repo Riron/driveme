@@ -1,5 +1,5 @@
 angular.module('driveme')
-  .controller('SettingsCtrl', function ($scope, $ionicActionSheet, cameraService, Restangular, $state) {
+  .controller('SettingsCtrl', function ($scope, $ionicActionSheet, cameraService, Restangular, $state, $localStorage) {
 
     $scope.showActionSheet = function() {
 			// Show the action sheet
