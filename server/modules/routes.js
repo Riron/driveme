@@ -7,11 +7,13 @@ module.exports = function (express, db, app) {
 		console.log('Something is happening.');
 		// If method type is OPTIONS, return OK
 		res.set({'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, X-Access-Token'})
-		if(req.url != '/login') { app.validate(req, res, next); }
-		if(req.method == 'options') {
-			res.json({ options: 'OK' });
+		if(req.method == 'OPTIONS') {
+			console.log('option !');
+			//res.send();
 		}
 		else {
+			console.log('no option !')
+			if(req.url !== '/login') { app.validate(req, res, next); }
 			next(); // make sure we go to the next routes and don't stop here
 		}
 	});
@@ -39,26 +41,26 @@ module.exports = function (express, db, app) {
 		});
 
 	router.route('/login')
-	.post(function (req, res) {
+		.post(function (req, res) {
 
-		console.log('log start');
-		var query = 'SELECT id FROM user WHERE username ='+ db.escape(req.body.login) +' and password = '+ db.escape(req.body.password);
-		console.log(query);
-		db.query(query, function(err, rows) {
-			if(err) {
-				res.send(err);
-				throw err;
-			}
-			else if(rows.length === 1){
-				var token = app.generateToken(rows[0].id);
-				console.log(token);
-				res.json({token: token})
-			}
-			else{
-				res.json({error:'KO'});
-			}
+			console.log('log start');
+			var query = 'SELECT id FROM user WHERE username ='+ db.escape(req.body.login) +' and password = '+ db.escape(req.body.password);
+			console.log(query);
+			db.query(query, function(err, rows) {
+				if(err) {
+					res.send(err);
+					throw err;
+				}
+				else if(rows.length === 1){
+					var token = app.generateToken(rows[0].id, Date.now());
+					console.log(token);
+					res.json({token: token})
+				}
+				else{
+					res.json({error:'KO'});
+				}
+			});
 		});
-	});
 
 	// Single trip
 	router.route('/trips/:trip_id')
@@ -194,6 +196,7 @@ module.exports = function (express, db, app) {
 		.get(function (req, res) {
 			db.query('SELECT id, title, date, picture FROM news LIMIT 10', function(err, rows) {
 				if(err) {
+					console.log('error in news')
 					res.send(err);
 					throw err;
 				}

@@ -13,26 +13,26 @@ module.exports = function (app, db) {
 		if (token) {
 			contents = token.split(':')
 			if (contents.length !== 3) { return res.send(401) }
-			var query = 'SELECT id FROM user WHERE  id ='+ contents[0];
+			var query = 'SELECT id FROM user WHERE id='+ contents[0];
 			db.query(query, function(err, rows){
 				if(err) {
 					res.send(err);
 					throw err;
 				}
 				else{
-					if (rows.length === 1) {
-						req.log.warning('token received with invalid user id: %s', contents[0])
+					if (rows.length !== 1) {
+						console.log('token received with invalid user id: %s', contents[0])
 						res.send(401)
 					} else if (!validTimestamp(contents[1])) {
-						req.log.debug('token received with expired timestamp')
+						console.log('token received with expired timestamp')
 						res.send(401)
 					} else if (!validSignature(contents)) {
-						req.log.warning('token received with invalid signature: %s', token)
+						console.log('token received with invalid signature: %s', token)
 						res.send(401)
 					} else {
-						req.user = user
-						res.set(TOKEN_HEADER, generateToken(user.id, Date.now() + age, key))
-						next()
+						console.log('token valid');
+						res.set(TOKEN_HEADER, app.generateToken(contents[0],Date.now() + age));
+						next();
 					} 
 				}
 			})
@@ -42,17 +42,16 @@ module.exports = function (app, db) {
 		}
 
 			function validTimestamp(timestamp) {
-				return timestamp - Date.now() >= 0
+				return timestamp - Date.now() <= 0
 			}
 
 			function validSignature(contents) {
-				return generateToken(contents[0], contents[1], key)  === contents.join(':')
+				return app.generateToken(contents[0],contents[1])  === contents.join(':')
 			}
 	}
 
 	// generate signed access token with user id and timestamp
-	app.generateToken = function (id) {
-		timestamp = Date.now() + age;
+	app.generateToken = function (id, timestamp) {
 		var content = id + ':' + timestamp
 		return content + ':' + crypto
 		.createHmac('sha256', new Buffer(key, 'base64'))

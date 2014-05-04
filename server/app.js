@@ -24,9 +24,6 @@ app.set('token key', process.env.DASHES_TOKEN_KEY || key)
 // define setting for max age of token
 app.set('token age', process.env.DASHES_TOKEN_AGE || 60*60*1000)
 
-// define setting for max age of token
-app.set('token header', process.env.DASHES_TOKEN_HEADER || 'X-Access-Token');
-
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser());
