@@ -1,19 +1,19 @@
 var crypto = require('crypto');
 
 module.exports = function (app, db) {
-	var TOKEN_HEADER = 'X-Access-Token'
-  	var key = app.get('token key')
-  	var age = app.get('token age')
+	var TOKEN_HEADER = 'X-Access-Token';
+	var key = app.get('token key');
+	var age = app.get('token age');
 	// validate signed access token included in request header
 	// TODO improve logging for fail2ban processing
 	app.validate = function (req, res, next) {
-		var token = req.get(TOKEN_HEADER)
-		var contents
+		var token = req.get(TOKEN_HEADER);
+		var contents;
 
 		if (token) {
 			contents = token.split(':')
 			if (contents.length !== 3) { return res.send(401) }
-			var query = 'SELECT id FROM user WHERE id='+ contents[0];
+			var query = 'SELECT id FROM user WHERE id=' + contents[0];
 			db.query(query, function(err, rows){
 				if(err) {
 					res.send(err);
@@ -41,13 +41,13 @@ module.exports = function (app, db) {
 			res.send(401)
 		}
 
-			function validTimestamp(timestamp) {
-				return timestamp - Date.now() <= 0
-			}
+		function validTimestamp(timestamp) {
+			return timestamp - Date.now() <= 0
+		}
 
-			function validSignature(contents) {
-				return app.generateToken(contents[0],contents[1])  === contents.join(':')
-			}
+		function validSignature(contents) {
+			return app.generateToken(contents[0],contents[1])  === contents.join(':')
+		}
 	}
 
 	// generate signed access token with user id and timestamp

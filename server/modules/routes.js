@@ -11,9 +11,8 @@ module.exports = function (express, db, app) {
 			res.send();
 		}
 		else {
-			console.log('no option !')
 			if(req.url !== '/login') { app.validate(req, res, next); }
-			next(); // make sure we go to the next routes and don't stop here
+			else { next(); } // make sure we go to the next routes and don't stop here
 		}
 	});
 
