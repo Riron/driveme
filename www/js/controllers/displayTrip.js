@@ -4,6 +4,7 @@ angular.module('driveme')
     $scope.participants = [];
     $scope.in = false;
     $scope.button_text = 'S\'ajouter à la liste';
+    $scope.user_id = $localStorage.id;
 
     Restangular.one('trips', $stateParams.id).getList().then(function (trip) {
     	$scope.trip = trip[0];
@@ -14,8 +15,12 @@ angular.module('driveme')
       Restangular.one('trips', $stateParams.id).getList('users').then(function (users) {
       	$scope.participants = users;
       	console.log($scope.participants);
-        // TODO: if user is already participant, switch in to true
-        // $scope.in = true;
+        // If user is already participant, switch in to true
+        angular.forEach(users, function (value) {
+          if(value.id === $scope.user_id) {
+            $scope.in = true;
+          }
+        });
       })
     }
 
