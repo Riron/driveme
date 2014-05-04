@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 module.exports = function (express, db, app) {
+=======
+var fs = require('fs');
+
+module.exports = function (express, db) {
+>>>>>>> PICTURE-UPLOAD.DEV
 	var router = express.Router();
 
 	// middleware to use for all requests
@@ -211,6 +217,21 @@ module.exports = function (express, db, app) {
 				}
 				res.json(rows);
 			});
+		});
+
+	router.route('/upload')
+		.post(function (req, res) {
+			var fstream;
+	    req.pipe(req.busboy);
+	    req.busboy.on('file', function (fieldname, file, filename) {
+	        console.log("Uploading: " + filename); 
+	        fstream = fs.createWriteStream('./uploads/' + filename);
+	        file.pipe(fstream);
+	        fstream.on('close', function () {
+	            res.send('File uploaded : ' + filename);
+	            console.log('File uploaded : ' + filename);
+	        });
+	    });
 		});
 
 	return router;
