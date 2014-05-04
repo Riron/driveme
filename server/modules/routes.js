@@ -8,8 +8,7 @@ module.exports = function (express, db, app) {
 		// If method type is OPTIONS, return OK
 		res.set({'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, X-Access-Token'})
 		if(req.method == 'OPTIONS') {
-			console.log('option !');
-			//res.send();
+			res.send();
 		}
 		else {
 			console.log('no option !')
