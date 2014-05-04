@@ -7,6 +7,9 @@ angular.module('driveme')
 	  		$scope.edit = true;
 
 	  	}
+	  	else {
+	  		$scope.userId = $stateParams.id;
+	  	}
 			Restangular.one('users', $scope.userId).get().then(function (user) {
 				$scope.user = user[0];
 				$scope.user.username = $filter('name')($scope.user.username);

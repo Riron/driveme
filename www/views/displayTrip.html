@@ -18,7 +18,7 @@
 		  <li class="item" ng-show="participants.length === 0">
 		  	Personne n'a demandé à participer à ce voyage
 		  </li>
-		  <a class="item item-avatar" ng-repeat="participant in participants" ng-show="participants.length > 0" ui-sref="tabs.trip">
+		  <a class="item item-avatar" ng-repeat="participant in participants" ng-show="participants.length > 0" ui-sref="tabs.user({id: participant.id})">
 	      <img ng-src="{{participant.picture}}">
 	      <h2>{{participant.username}} est inscrit</h2>
 	      <span class="badge badge-balanced" ng-show="$index <= trip.seats"><i class="ion-checkmark-round"></i></span>
