@@ -8,6 +8,7 @@ angular.module('driveme')
 				.then(function(res) {
 					$localStorage.token = res.token;
 					apiService.init(res.token);
+					$localStorage.id = res.token.split(':')[0];
 					$state.go('tabs.news');
 				}, function(res) {
 					alert('Erreur de login !');

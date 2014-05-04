@@ -3,8 +3,7 @@ angular.module('driveme')
 
 	  $scope.getUserInfo = function () {
 	  	if(typeof $stateParams.id == 'undefined') {
-	  		// $scope.userId = $localStorage.id;
-	  		$scope.userId = 1;
+	  		$scope.userId = $localStorage.id;
 	  		$scope.edit = true;
 
 	  	}

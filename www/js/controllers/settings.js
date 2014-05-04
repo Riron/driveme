@@ -39,8 +39,7 @@ angular.module('driveme')
 		};
 
   	$scope.getUserInfo = function () {
-  		// $scope.userId = $localStorage.id;
-  		$scope.userId = 1;
+  		$scope.userId = $localStorage.id;
 			Restangular.one('users', $scope.userId).get().then(function (user) {
 				$scope.user = user[0];
 			});

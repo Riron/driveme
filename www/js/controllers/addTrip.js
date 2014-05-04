@@ -1,7 +1,6 @@
 angular.module('driveme')
   .controller('AddTripCtrl', ['$scope', 'socketService', 'Restangular', '$localStorage', '$state', function ($scope, socket, Restangular, $localStorage, $state) {
-    // TEMP: id = 1 - Should be $localStorage.id later on
-    $scope.trip = {seats: 4, user_id: 1};
+    $scope.trip = {seats: 4, user_id: $localStorage.id};
 
     var baseTrip = Restangular.all('trips');
 
