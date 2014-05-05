@@ -17,8 +17,10 @@ angular.module('driveme')
       	console.log($scope.participants);
         // If user is already participant, switch in to true
         angular.forEach(users, function (value) {
-          if(value.id === $scope.user_id) {
+          console.log(value.id +'-'+ $scope.user_id)
+          if(value.id == $scope.user_id) {
             $scope.in = true;
+            $scope.button_text = 'Se retirer de la liste';
           }
         });
       })
