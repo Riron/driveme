@@ -18,7 +18,7 @@ var db = mysql.createConnection({
 
 db.connect();
 
-<<<<<<< HEAD
+
 // define setting for 256 bit token key (base64 encoding)
 var key = 'T=y:nL9el!_Fm1HV|1`-]o*^[,-odsG[<T.W41@=|Aq:l,Z.MII|*VA5$V&g5vvi'
 app.set('token key', process.env.DASHES_TOKEN_KEY || key)
@@ -26,9 +26,7 @@ app.set('token key', process.env.DASHES_TOKEN_KEY || key)
 // define setting for max age of token
 app.set('token age', process.env.DASHES_TOKEN_AGE || 60*60*1000)
 
-=======
 app.use(busboy());
->>>>>>> PICTURE-UPLOAD.DEV
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser());

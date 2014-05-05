@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-module.exports = function (express, db, app) {
-=======
-var fs = require('fs');
 
-module.exports = function (express, db) {
->>>>>>> PICTURE-UPLOAD.DEV
+module.exports = function (express, db, app) {
+	var fs = require('fs');
 	var router = express.Router();
 
 	// middleware to use for all requests
