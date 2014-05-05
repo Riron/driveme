@@ -6,10 +6,7 @@
 	background-size: 100% 100%;
 }
 #start .scroll{
-	-webkit-transform: none !important;
-	position: absolute;
-	width: 100%;
-	bottom: 40%;
+	margin-top: 10%;
 }
 #start button {
 	display: block;

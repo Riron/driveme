@@ -18,7 +18,6 @@ var db = mysql.createConnection({
 
 db.connect();
 
-
 // define setting for 256 bit token key (base64 encoding)
 var key = 'T=y:nL9el!_Fm1HV|1`-]o*^[,-odsG[<T.W41@=|Aq:l,Z.MII|*VA5$V&g5vvi'
 app.set('token key', process.env.DASHES_TOKEN_KEY || key)
