@@ -5,19 +5,15 @@
 	background-image: url(../img/start-douai-background-proportion.png);
 	background-size: 100% 100%;
 }
-#start .scroll{
-	margin-top: 10%;
+#start .scroll .divButton, #login .scroll .divButton {
+	position: absolute;
+	width: 100%;
+	bottom: 40%;
 }
 #start button {
 	display: block;
 	width: 80%;
 	margin: 20px auto;
-}
-#login .scroll{
-	-webkit-transform: none !important;
-	position: absolute;
-	width: 100%;
-	bottom: 40%;
 }
 #login button, #login .list-inset{
 	display: block;

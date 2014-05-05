@@ -1,32 +1,23 @@
 <ion-view title="Log in" id="login">
   <ion-content>
-    <!--<div class="list">
-      <label class="item item-input">
-        <span class="input-label">Username</span>
-        <input type="text" ng-model="user.username">
-      </label>
-      <label class="item item-input">
-        <span class="input-label">Password</span>
-        <input type="password" ng-model="user.password">
-      </label>
-    </div>-->
-
-    <div class="list list-inset">
-      <label class="item item-input">
-        <i class="icon ion-email placeholder-icon"></i>
-        <input type="text" placeholder="Mail" ng-model="logger.login">
-      </label>
-    </div>
-    <div class="list list-inset">
-      <label class="item item-input">
-        <i class="icon ion-locked placeholder-icon"></i>
-        <input type="password" placeholder="Password" ng-model="logger.password" >
-      </label>
-    </div>
-    <div class="padding">
-      <button class="button button-block button-positive" ng-click="login(logger)">
-        Log In
-      </button>
+    <div class="divButton">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <i class="icon ion-email placeholder-icon"></i>
+          <input type="text" placeholder="Mail" ng-model="logger.login">
+        </label>
+      </div>
+      <div class="list list-inset">
+        <label class="item item-input">
+          <i class="icon ion-locked placeholder-icon"></i>
+          <input type="password" placeholder="Password" ng-model="logger.password" >
+        </label>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="login(logger)">
+          Log In
+        </button>
+      </div>
     </div>
   </ion-content>
 </ion-view>
