@@ -21,4 +21,6 @@ angular.module('driveme')
 	  $scope.dial = function (number) {
 	  	$window.location.href = "tel:" + number; 
 	  }
+
+	  ionic.Platform.ready(function(){console.log(ionic.Platform.device())});
   });
