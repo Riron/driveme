@@ -8,13 +8,11 @@ angular.module('driveme')
 
     Restangular.one('trips', $stateParams.id).getList().then(function (trip) {
     	$scope.trip = trip[0];
-    	console.log($scope.trip);
     })
 
     $scope.listParticipants = function () {
       Restangular.one('trips', $stateParams.id).getList('users').then(function (users) {
       	$scope.participants = users;
-      	console.log($scope.participants);
         // If user is already participant, switch in to true
         angular.forEach(users, function (value) {
           console.log(value.id +'-'+ $scope.user_id)

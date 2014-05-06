@@ -10,7 +10,11 @@
 		  <a class="item item-avatar slide-in-left" ng-repeat="trip in trips | orderBy:'time'" ng-show="trips.length > 0" ui-sref="tabs.displayTrip({id: trip.id})">
 	      <img src="http://lorempixel.com/100/100/people/">
 	      <h2>Départ pour <strong>{{trip.direction}}</strong> - {{trip.time | date: 'd MMM - h:mm'}}</h2>
-	      <p>{{trip.username}} a {{trip.seats}} places</p>
+	      <p>
+	      	{{trip.username}} a {{trip.seats}} places 
+	      	<span class="assertive" ng-show="id==trip.user_id"><i class="ion-alert-circled"></i> Je conduis</span>
+	      	<span class="balanced" ng-show="doesParticipate(trip.participants, id)"><i class="ion-information-circled"></i> Je participe</span>
+	      </p>
 	    </a>
 		</div>
 		<div class="padding">
