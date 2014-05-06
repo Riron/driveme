@@ -21,8 +21,10 @@
 		  <a class="item item-avatar slide-in-left" ng-repeat="participant in participants" ng-show="participants.length > 0" ui-sref="tabs.user({id: participant.id})">
 	      <img ng-src="{{participant.picture}}">
 	      <h2>{{participant.username}} est inscrit</h2>
-	      <span class="badge badge-balanced" ng-show="$index <= trip.seats"><i class="ion-checkmark-round"></i></span>
-	      <span class="item-note" ng-show="$index > trip.seats">Sur liste d'attente</span>
+	      <p ng-show="($index+1) <= trip.seats">Inscrit</p>
+	      <p ng-show="($index+1) > trip.seats">Sur liste d'attente</p>
+	      <span class="badge badge-balanced" ng-show="($index+1) <= trip.seats"><i class="ion-checkmark-round"></i></span>
+	      <span class="badge badge-energized" ng-show="($index+1) > trip.seats"><i class="ion-help"></i></span>
 	    </a>
 		</div>
 

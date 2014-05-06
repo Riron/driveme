@@ -5,7 +5,7 @@ angular.module('driveme')
     var baseTrip = Restangular.all('trips');
 
     $scope.addTrip = function () {
-    	baseTrip.post($scope.trip).then(function () {
+      baseTrip.post($scope.trip).then(function () {
     		// Notify that a trip has been added
 	  		socket.emit('trip added');
 	  		// And go back to trips page
