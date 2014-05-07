@@ -56,3 +56,11 @@
 .calm {
 	color: #43cee6;
 }
+.center {
+	text-align: center;
+}
+.about-logo {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	height: 150px;
+}

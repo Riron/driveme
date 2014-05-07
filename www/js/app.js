@@ -38,6 +38,11 @@ angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
     templateUrl: "views/intro.html",
     controller: 'IntroCtrl'
   })
+  .state('about', {
+    url: "/about",
+    templateUrl: "views/about.html",
+    controller: 'IntroCtrl'
+  })
 	.state('tabs', {
     url: "/tabs",
     abstract: true,
