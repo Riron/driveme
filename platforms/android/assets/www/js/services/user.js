@@ -10,18 +10,10 @@ angular.module('driveme')
 
 		return {
 			isLogged: function() {
-        return user.isLogged;
-      },
+        		return user.isLogged;
+      		},
 			login: function (credentials) {
-				loginRoute.post(credentials).then(function (response) {
-					// Logged On
-					user.isLogged = true;
-					user.username = credentials.username;
-					return true;
-				}, function () {
-					// Error
-					return false;
-				});
+				// Login here
 			},
 			logout: function () {
 				user.isLogged = false;

@@ -2,34 +2,38 @@
   <ion-content>
     <ion-list>
     	<label class="item item-input">
-		    <span class="input-label">Prénom</span>
-		    <input type="text" value="Jean Baptiste" disabled>
-		  </label>
-		  <label class="item item-input">
-		    <span class="input-label">Nom</span>
-		    <input type="text" value="La Buzz" disabled>
-		  </label>
-      <label class="item item-input">
-		    <span class="input-label">Voiture</span>
-		    <input type="text" name="car" placeholder="Renault C4">
-		  </label>
-		  <label class="item item-input">
-		    <span class="input-label">Musique écoutée</span>
-		    <input type="text" name="music" placeholder="Electro">
-		  </label>
-		  <label class="item item-input">
-		    <span class="input-label">N° de chambre</span>
-		    <input type="number" name="room" placeholder="007" min="1">
+		    <span class="input-label">Username</span>
+		    <input type="text" ng-model="user.username" disabled>
 		  </label>
 		  <label class="item item-input">
 		    <span class="input-label">Photo de profil</span>
 		    <a class="avatar">
-		    	<img ng-src="{{profilePicture}}" ng-click="showActionSheet()" class="profile-picture">
+		    	<img ng-src="{{user.picture}}" ng-click="showActionSheet()" class="profile-picture">
 		    </a>
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Promo</span>
+		    <input type="number" name="room" placeholder="2014" min="2010" max="2018" ng-model="user.promo">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">N° de chambre</span>
+		    <input type="number" name="room" placeholder="007" min="1" ng-model="user.room">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Numéro de téléphone</span>
+		    <input type="tel" name="car" placeholder="+33 6 01 23 45 67 " ng-model="user.phone">
+		  </label>
+      <label class="item item-input">
+		    <span class="input-label">Voiture</span>
+		    <input type="text" name="car" placeholder="Renault C4" ng-model="user.car">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Musique écoutée</span>
+		    <input type="text" name="music" placeholder="Electro, Rap, R'n'B" ng-model="user.musicType">
 		  </label>
     </ion-list>
     		<div class="padding">
-			<button class="button button-block button-positive">
+			<button class="button button-block button-positive" ng-click="saveInfos()">
 		  	Enregistrer
 			</button>
 		</div>

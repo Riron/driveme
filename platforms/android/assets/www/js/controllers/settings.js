@@ -1,6 +1,5 @@
 angular.module('driveme')
-  .controller('SettingsCtrl', function ($scope, $ionicActionSheet, cameraService) {
-    $scope.profilePicture = 'http://lorempixel.com/50/50/people/';
+  .controller('SettingsCtrl', function ($scope, $ionicActionSheet, cameraService, Restangular, $state, $localStorage) {
 
     $scope.showActionSheet = function() {
 			// Show the action sheet
@@ -21,6 +20,7 @@ angular.module('driveme')
 						cameraService.getPicture(function(imageURI) {
 							console.log('Galery :' + imageURI);
 							$scope.profilePicture = imageURI;
+							cameraService.upload(imageURI);
 						}, function(error) {
 							console.log(error);
 						}, {sourceType: Camera.PictureSourceType.PHOTOLIBRARY});
@@ -37,5 +37,20 @@ angular.module('driveme')
 				return true;
 				}
 			});
-	 };
+		};
+
+  	$scope.getUserInfo = function () {
+  		$scope.userId = $localStorage.id;
+			Restangular.one('users', $scope.userId).get().then(function (user) {
+				$scope.user = user[0];
+			});
+	  };
+
+	  $scope.getUserInfo();
+
+	  $scope.saveInfos = function () {
+	  	Restangular.one('users', $scope.userId).customPUT($scope.user).then(function () {
+	  		$state.go('tabs.profile');
+	  	})
+	  }
   });

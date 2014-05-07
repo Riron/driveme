@@ -1,6 +1,6 @@
 angular.module('driveme')
   .factory('socketService', function ($rootScope) {
-    var socket = io.connect('http://localhost:8080');
+    var socket = io.connect('http://rlier.fr:8282');
     return {
       on: function (eventName, callback) {
         socket.on(eventName, function () {  

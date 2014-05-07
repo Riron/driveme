@@ -15,13 +15,33 @@ angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
 })
 .config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
   // Configure Restangular base route
-  RestangularProvider.setBaseUrl('http://localhost:8080/api/v1');
-
+  RestangularProvider.setBaseUrl('http://rlier.fr:8282/api/v1');
+  
 	// Configure routes
-	$stateProvider.state('signin', {
-    url: "/sign-in",
-    templateUrl: "views/sign-in.html",
-    controller: 'SignInCtrl'
+	$stateProvider.state('login', {
+    url: "/login",
+    templateUrl: "views/login.html",
+    controller: 'LogInCtrl'
+  })
+  .state('start', {
+    url: "/start",
+    templateUrl: "views/start.html",
+    controller: 'StartCtrl'
+  })
+  .state('signup', {
+    url: "/signup",
+    templateUrl: "views/signup.html",
+    controller: 'SignUpCtrl'
+  })
+  .state('intro', {
+    url: "/intro",
+    templateUrl: "views/intro.html",
+    controller: 'IntroCtrl'
+  })
+  .state('about', {
+    url: "/about",
+    templateUrl: "views/about.html",
+    controller: 'IntroCtrl'
   })
 	.state('tabs', {
     url: "/tabs",
@@ -73,6 +93,24 @@ angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
       }
     }
   })
+  .state('tabs.profile', {
+    url: '/profile',
+    views: {
+      'settings-tab': {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
+      }
+    }
+  })
+  .state('tabs.user', {
+    url: '/profile/{id:[0-9]{1,8}}',
+    views: {
+      'trip-tab': {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
+      }
+    }
+  })
   .state('tabs.settings', {
     url: '/settings',
     views: {
@@ -83,5 +121,5 @@ angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
     }
   });
   // If unknown route, redirect to sign-in
-  $urlRouterProvider.otherwise("/sign-in");
+  $urlRouterProvider.otherwise("/start");
 })
