@@ -1,56 +1,62 @@
-Ionic App Base
-=====================
+Drive Me
+=========
 
-A starting project for Ionic that optionally supports
-using custom SCSS, and makes it easy to update Ionic through
-bower.
+Drive Me est une application mobile construite par des étudiants des [Mines Douai] dans le cadre du concours Appl'it.
 
-## Using this project
+> Le concours Appl’It vise la promotion des écoles de l’Institut Mines-Télécom auprès de leurs futurs admis, en proposant aux élèves de créer une application Android ayant pour thème la vie de leur école.
 
-We recommend using the `ionic` utility to create new Ionic projects that are based on this project but use a ready-made starter template.
+L'idée a donc été de concevoir une application qui simplifierait la gestion des voyages pour les élèves des Mines Douai.
+En effet, le campus rassemblant les chambres étudiantes étant éloigné des bâtiments ou se déroulent les cours, il est bien souvent nécessaire de s'y rendre en voiture.
 
-For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
+Chaque matin, une chasse à la voiture a donc lieu, et il est souvent bien difficile de trouver un conducteur dans les temps, obligeant alors les élèves à une longue marche solitaire de 20 minutes sous la pluie du Noooord...
 
-```bash
-$ sudo npm install -g ionic
-```
+Pour répondre à ce problème, l'application permet :
+* Aux conducteurs d'enregistrer le trajet qu'ils ont prévu de faire à l'avance
+* Aux passagers de s'enregistrer sur un trajet proposé
 
-Then run:
+En plus de ça, chacun disposera d'un profil utilisateur basé sur ses identifiants école et personnalisable, afin de trouver la voiture qui lui correspond le mieux ou de rencontrer de nouveaux Mineurs !
 
-```bash
-$ sudo npm install -g ionic
-$ ionic start myProject tabs
-```
+Un système de news est également implémenté pour permettre aux étudiants d'accéder rapidement à toutes les infos concernant leur campus.
 
-More info on this can be found on the Ionic [Getting Started](ionicframework.com/getting-started) page.
+Technologies
+-----------
 
-## Installation
+Drive Me a été développé uniquement avec des technologies webs. L'idée était de profiter de l'opportunité pour rendre services aux élèves des Mines Douai, bien sûr, mais également pour réaliser un *showcase* technologique démontrant la viabilité des applications mobiles réalisés avec les dernières technologies webs. Rapide, fluide interragissant avec des fonctionnalités native du téléphone, connecté, Drive Me n'a rien à envier à une application native.
 
-While we recommend using the `ionic` utility to create new Ionic projects, you can use this repo as a barebones starting point to your next Ionic app.
+En effet nous avons la profonde conviction que les *Mobile Web App* sont un choix judicieux dans 95% des cas, et que peu à peu ils vont prendre le pas sur les développements natifs de par leur fléxibilité, leur performance, et leur facilité à les porter d'une plateforme à une autre.
 
-To use this project as is, first clone the repo from GitHub, then run:
+Côté client :
 
-```bash
-$ cd ionic-app-base
-$ sudo npm install -g bower
-$ npm install
-$ gulp init
-```
+* AngularJS
+* Utilisation de Framework Ionic
+* Cordova pour packager l'app
 
-This will download the most recent Ionic release from bower, and copy over the SCSS files into `./sass` for future editing.
+Et côté serveur :
 
-## Using Sass (optional)
+* NodeJS
+* Utilisation du framework [Express]
+* Utilisation de la librairie Socket.IO pour gérer les sockets
+* Une base de données MySQL
 
-This project makes it easy to use Sass (the SCSS syntax) in your projects. This enables you to override styles from Ionic, and benefit from
-Sass's great features.
+Auteurs
+---
+A la réalisation, les **Peaches** :
+* Jean-Baptiste Beuzelin
+* Jérôme Chaaban
+* Orion Charlier
 
-Just update the `./scss/ionic.app.scss` file, and run `gulp` or `gulp watch` to rebuild the CSS files for Ionic.
+Version
+----
 
-Note: if you choose to use the Sass method, make sure to remove the included `ionic.css` file in `index.html`, and then uncomment
-the include to your `ionic.app.css` file which now contains all your Sass code and Ionic itself:
+1.0
 
-```html
-<!-- IF using Sass (run gulp sass first), then remove the CSS include above
-<link href="css/ionic.app.css" rel="stylesheet">
--->
-```
+License
+----
+
+MIT
+
+
+**Free Software, Hell Yeah!**
+
+[Mines Douai]:http://www.mines-douai.fr/
+[Express]:http://expressjs.com
