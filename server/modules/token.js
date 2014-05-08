@@ -11,6 +11,7 @@ module.exports = function (app, db) {
 		var contents;
 
 		if (token) {
+			console.log("l'age donné en plus au token est de %s", age);
 			contents = token.split(':')
 			if (contents.length !== 3) { return res.send(401) }
 			var query = 'SELECT id FROM user WHERE id=' + contents[0];
@@ -30,8 +31,7 @@ module.exports = function (app, db) {
 						console.log('token received with invalid signature: %s', token)
 						res.send(401)
 					} else {
-						console.log('token valid');
-						res.set(TOKEN_HEADER, app.generateToken(contents[0],Date.now() + age));
+						res.set(TOKEN_HEADER, app.generateToken(contents[0],Date.now()+age));
 						next();
 					} 
 				}
@@ -42,7 +42,7 @@ module.exports = function (app, db) {
 		}
 
 		function validTimestamp(timestamp) {
-			return timestamp - Date.now() <= 0
+			return timestamp - Date.now() >= 0
 		}
 
 		function validSignature(contents) {
@@ -52,6 +52,7 @@ module.exports = function (app, db) {
 
 	// generate signed access token with user id and timestamp
 	app.generateToken = function (id, timestamp) {
+		console.log('creation token, timestamp : %s et now :%s', timestamp, Date.now());
 		var content = id + ':' + timestamp
 		return content + ':' + crypto
 		.createHmac('sha256', new Buffer(key, 'base64'))

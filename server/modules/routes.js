@@ -1,4 +1,3 @@
-
 module.exports = function (express, db, app) {
 	var fs = require('fs');
 	var router = express.Router();
@@ -8,7 +7,7 @@ module.exports = function (express, db, app) {
 		// do logging
 		console.log('Something is happening.');
 		// If method type is OPTIONS, return OK
-		res.set({'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, X-Access-Token'})
+		res.set({'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS', 'Access-Control-Expose-Headers': 'X-Access-Token', 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, X-Access-Token'})
 		if(req.method == 'OPTIONS') {
 			res.send();
 		}
@@ -40,6 +39,11 @@ module.exports = function (express, db, app) {
 			});
 		});
 
+	router.route('/loginWithToken')
+		.post(function (req, res) {
+			res.json({succes :"ok"});
+		});
+
 	router.route('/login')
 		.post(function (req, res) {
 
@@ -52,7 +56,7 @@ module.exports = function (express, db, app) {
 					throw err;
 				}
 				else if(rows.length === 1){
-					var token = app.generateToken(rows[0].id, Date.now());
+					var token = app.generateToken(rows[0].id, Date.now()+app.get('token age'));
 					console.log(token);
 					res.json({token: token})
 				}

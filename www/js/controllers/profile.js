@@ -1,5 +1,5 @@
 angular.module('driveme')
-  .controller('ProfileCtrl', function ($scope, $stateParams, Restangular, $localStorage, $filter, $window) {
+  .controller('ProfileCtrl', function ($scope, $stateParams, Restangular, $localStorage, $filter, $window, userService) {
 
 	  $scope.getUserInfo = function () {
 	  	if(typeof $stateParams.id == 'undefined') {
@@ -20,6 +20,10 @@ angular.module('driveme')
 
 	  $scope.dial = function (number) {
 	  	$window.location.href = "tel:" + number; 
+	  }
+
+	  $scope.logout= function(){
+	  	userService.logout();
 	  }
 
 	  ionic.Platform.ready(function(){console.log(ionic.Platform.device())});

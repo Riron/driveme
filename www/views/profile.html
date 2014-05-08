@@ -41,7 +41,7 @@
 		<button class="button button-block button-positive" ui-sref="tabs.settings" ng-show="edit">
 	  	Editer mon profil
 		</button>
-		<button class="button button-block button-assertive" ui-sref="tabs.settings" ng-show="edit">
+		<button class="button button-block button-assertive" ng-show="edit" ng-click="logout()">
 	  	Me déconnecter
 		</button>
 		<button class="button button-block button-royal" ui-sref="intro" ng-show="edit">
