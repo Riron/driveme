@@ -1,5 +1,5 @@
 angular.module('driveme')
-	.factory('userService', function (Restangular) {
+	.factory('userService', function ($localStorage, $state, Restangular, apiService) {
 		var user = {
 			isLogged: false,
 			username: ''
@@ -17,7 +17,9 @@ angular.module('driveme')
 			},
 			logout: function () {
 				user.isLogged = false;
-				user.username = '';
+				$localStorage.$reset();
+				apiService.remove();
+				$state.go("start");
 			}
 		};
 	});
