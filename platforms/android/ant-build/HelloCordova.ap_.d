@@ -64,6 +64,7 @@ D:\Program Files\wamp\www\drivin\platforms\android\assets\www\js\services\camera
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\js\services\cordovaReady.js \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\js\services\pushNotification.js \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\js\services\socket.js \
+D:\Program Files\wamp\www\drivin\platforms\android\assets\www\js\services\tokenInterceptor.js \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\js\services\user.js \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\lib\angular \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\lib\angular-animate \

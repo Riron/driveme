@@ -230,6 +230,15 @@ module.exports = function (express, db, app) {
 	        fstream.on('close', function () {
 	            res.send('File uploaded : ' + filename);
 	            console.log('File uploaded : ' + filename);
+	            var id = filename.split('-');
+	            var id = id[id.length-1];
+	            db.query('UPDATE user SET picture = http://rlier.fr/orion/driveme/uploads/' + filename + '  WHERE id =' + id, function(err, rows) {
+								if(err) {
+									res.send(err);
+									throw err;
+								}
+								res.json(rows);
+							});
 	        });
 	    });
 		});

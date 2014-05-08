@@ -26,8 +26,8 @@ var Camera = Camera || {
 };
 
 angular.module('driveme')
-	.factory('cameraService', function (cordovaReadyService) {
-		return {
+	.factory('cameraService', function (cordovaReadyService, $localStorage, API_URL) {
+    return {
 			// Wrap it into the cordovaReady service
 			getPicture: cordovaReadyService(function(onSuccess, onError, options) {
 				// Define default options
@@ -38,37 +38,37 @@ angular.module('driveme')
 				// Get picture
 				navigator.camera.getPicture(onSuccess, onError, options);
 			}),
-            upload: function (fileURI) {
-                console.log('upload');
-                var options = new FileUploadOptions();
-                options.fileKey = "file";
-                options.fileName = fileURI.substr(fileURI.lastIndexOf('/') + 1);
-                options.mimeType = "image/jpeg";
-                options.params = {}; // if we need to send parameters to the server request
-                var ft = new FileTransfer();
-                ft.upload(fileURI, encodeURI("http://localhost:8080/api/v1/upload"), win, fail, options);
-
-                var win = function (r) {
-                  clearCache();
-                  retries = 0;
-                  alert('Done!');
-                }
-
-                var fail = function (error) {
-                  if (retries == 0) {
-                    retries ++
-                    setTimeout(function() {
-                        onCapturePhoto(fileURI)
-                    }, 1000)
-                  } else {
-                    retries = 0;
-                    clearCache();
-                    alert('Ups. Something wrong happens!');
-                  }
-                }
-            },
-            clearCache: function () {
-                navigator.camera.cleanup();
-            }
+      upload: function (fileURI) {
+        var options = new FileUploadOptions();
+        options.fileKey = "file";
+        options.fileName = 'profile-' + $localStorage.id;
+        options.mimeType = "image/jpeg";
+        options.chunkedMode = false;
+        options.headers = {'X-Access-Token': $localStorage.token};
+        options.params = {};
+        var ft = new FileTransfer();
+        
+        var win = function (r) {
+          clearCache();
+          retries = 0;
+          alert('Done!');
+        }
+        var fail = function (error) {
+          if (retries == 0) {
+            retries ++
+            setTimeout(function() {
+                onCapturePhoto(fileURI)
+            }, 1000)
+          } else {
+            retries = 0;
+            clearCache();
+            alert('Ups. Something wrong happens!');
+          }
+        }
+        ft.upload(fileURI, encodeURI(API_URL + "/api/v1/upload"), win, fail, options);
+      },
+      clearCache: function () {
+          navigator.camera.cleanup();
+      }
 		};
 	});

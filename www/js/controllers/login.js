@@ -3,6 +3,7 @@ angular.module('driveme')
 	.controller('LogInCtrl', function ($scope, $state, Restangular, $localStorage, apiService) {
 
 		$scope.logger = {};
+
 		$scope.login = function() {
 			Restangular.all('login').post($scope.logger)
 				.then(function(res) {

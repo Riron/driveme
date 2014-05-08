@@ -26,8 +26,8 @@ var Camera = Camera || {
 };
 
 angular.module('driveme')
-	.factory('cameraService', function (cordovaReadyService) {
-		return {
+	.factory('cameraService', function (cordovaReadyService, $localStorage, API_URL) {
+    return {
 			// Wrap it into the cordovaReady service
 			getPicture: cordovaReadyService(function(onSuccess, onError, options) {
 				// Define default options
@@ -41,18 +41,18 @@ angular.module('driveme')
       upload: function (fileURI) {
         var options = new FileUploadOptions();
         options.fileKey = "file";
-        options.fileName = fileURI.substr(fileURI.lastIndexOf('/') + 1);
+        options.fileName = 'profile-' + $localStorage.id;
         options.mimeType = "image/jpeg";
-        options.params = {}; // if we need to send parameters to the server request
+        options.chunkedMode = false;
+        options.headers = {'X-Access-Token': $localStorage.token};
+        options.params = {};
         var ft = new FileTransfer();
-        ft.upload(fileURI, encodeURI("http://rlier.fr:8282/api/v1/upload"), win, fail, options);
-
+        
         var win = function (r) {
           clearCache();
           retries = 0;
           alert('Done!');
         }
-     
         var fail = function (error) {
           if (retries == 0) {
             retries ++
@@ -65,9 +65,10 @@ angular.module('driveme')
             alert('Ups. Something wrong happens!');
           }
         }
+        ft.upload(fileURI, encodeURI(API_URL + "/api/v1/upload"), win, fail, options);
       },
       clearCache: function () {
-        navigator.camera.cleanup();
+          navigator.camera.cleanup();
       }
 		};
 	});

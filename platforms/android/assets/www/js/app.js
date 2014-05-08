@@ -1,5 +1,5 @@
 angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
-.run(function($ionicPlatform, apiService, pushNotificationService) {
+.run(function($ionicPlatform, apiService, pushNotificationService, tokenInterceptor) {
   // Ionic Init
   $ionicPlatform.ready(function() {
     if(window.StatusBar) {
@@ -12,11 +12,15 @@ angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
 
   // Init api service to place token in HTTP headers
   apiService.init();
+
+  tokenInterceptor.init();
 })
-.config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
+//.constant('API_URL', 'http://localhost:8080')
+.constant('API_URL', 'http://rlier.fr:8282')
+.config(function($stateProvider, $urlRouterProvider, RestangularProvider, API_URL) {
   // Configure Restangular base route
-  RestangularProvider.setBaseUrl('http://rlier.fr:8282/api/v1');
-  
+  RestangularProvider.setBaseUrl(API_URL + '/api/v1');
+
 	// Configure routes
 	$stateProvider.state('login', {
     url: "/login",
