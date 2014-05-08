@@ -2,9 +2,10 @@ angular.module('driveme')
 	.controller('LogInCtrl', function ($scope, $state, Restangular, $localStorage, apiService) {
 
 		var logger = Restangular.all('login');
+		$scope.logger = {};
 
-		$scope.login = function(login) {
-			logger.post(login)
+		$scope.login = function() {
+			logger.post($scope.logger)
 				.then(function(res) {
 					$localStorage.token = res.token;
 					apiService.init(res.token);

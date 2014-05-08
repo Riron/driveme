@@ -38,36 +38,37 @@ angular.module('driveme')
 				// Get picture
 				navigator.camera.getPicture(onSuccess, onError, options);
 			}),
-      upload: function (fileURI) {
-        var options = new FileUploadOptions();
-        options.fileKey = "file";
-        options.fileName = fileURI.substr(fileURI.lastIndexOf('/') + 1);
-        options.mimeType = "image/jpeg";
-        options.params = {}; // if we need to send parameters to the server request
-        var ft = new FileTransfer();
-        ft.upload(fileURI, encodeURI("http://localhost:8080/api/v1/upload"), win, fail, options);
+            upload: function (fileURI) {
+                console.log('upload');
+                var options = new FileUploadOptions();
+                options.fileKey = "file";
+                options.fileName = fileURI.substr(fileURI.lastIndexOf('/') + 1);
+                options.mimeType = "image/jpeg";
+                options.params = {}; // if we need to send parameters to the server request
+                var ft = new FileTransfer();
+                ft.upload(fileURI, encodeURI("http://localhost:8080/api/v1/upload"), win, fail, options);
 
-        var win = function (r) {
-          clearCache();
-          retries = 0;
-          alert('Done!');
-        }
-     
-        var fail = function (error) {
-          if (retries == 0) {
-            retries ++
-            setTimeout(function() {
-                onCapturePhoto(fileURI)
-            }, 1000)
-          } else {
-            retries = 0;
-            clearCache();
-            alert('Ups. Something wrong happens!');
-          }
-        }
-      },
-      clearCache: function () {
-        navigator.camera.cleanup();
-      }
+                var win = function (r) {
+                  clearCache();
+                  retries = 0;
+                  alert('Done!');
+                }
+
+                var fail = function (error) {
+                  if (retries == 0) {
+                    retries ++
+                    setTimeout(function() {
+                        onCapturePhoto(fileURI)
+                    }, 1000)
+                  } else {
+                    retries = 0;
+                    clearCache();
+                    alert('Ups. Something wrong happens!');
+                  }
+                }
+            },
+            clearCache: function () {
+                navigator.camera.cleanup();
+            }
 		};
 	});
