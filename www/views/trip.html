@@ -8,7 +8,7 @@
 		  	Aucune voiture disponible actuellement...
 		  </li>
 		  <a class="item item-avatar slide-in-left" ng-repeat="trip in trips | orderBy:'time'" ng-show="trips.length > 0" ui-sref="tabs.displayTrip({id: trip.id})">
-	      <img src="http://lorempixel.com/100/100/people/">
+	      <img src="{{trip.picture}}">
 	      <h2><strong>{{trip.direction}}</strong> - {{trip.time | date: 'd MMM - h:mm'}}</h2>
 	      <p>
 	      	{{trip.username}} a {{trip.seats}} places 
