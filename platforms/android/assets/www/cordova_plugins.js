@@ -64,6 +64,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/com.ionic.keyboard/www/keyboard.js",
+        "id": "com.ionic.keyboard.keyboard",
+        "clobbers": [
+            "cordova.plugins.Keyboard"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.file/www/DirectoryEntry.js",
         "id": "org.apache.cordova.file.DirectoryEntry",
         "clobbers": [
@@ -202,6 +209,7 @@ module.exports.metadata =
     "com.phonegap.plugins.PushPlugin": "2.2.0",
     "org.apache.cordova.file-transfer": "0.4.3",
     "org.apache.cordova.device": "0.2.9",
+    "com.ionic.keyboard": "0.0.1",
     "org.apache.cordova.file": "1.1.0"
 }
 // BOTTOM OF METADATA

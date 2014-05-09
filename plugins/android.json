@@ -10,7 +10,8 @@
                 "<feature name=\"PushPlugin\"><param name=\"android-package\" value=\"com.plugin.gcm.PushPlugin\" /></feature>": 1,
                 "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
                 "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>": 1,
-                "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>": 1
+                "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>": 1,
+                "<feature name=\"Keyboard\"><param name=\"android-package\" value=\"com.ionic.keyboard.IonicKeyboard\" /><param name=\"onload\" value=\"true\" /></feature>": 1
             }
         },
         "AndroidManifest.xml": {
@@ -50,6 +51,9 @@
             "PACKAGE_NAME": "fr.peaches.mines.douai.driveme"
         },
         "org.apache.cordova.device": {
+            "PACKAGE_NAME": "fr.peaches.mines.douai.driveme"
+        },
+        "com.ionic.keyboard": {
             "PACKAGE_NAME": "fr.peaches.mines.douai.driveme"
         }
     },
