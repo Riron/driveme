@@ -41,7 +41,7 @@ module.exports = function(server, db) {
 			});
 
 			socket.on('trip added', function () {
-				refreshTrips();
+				setTimeout(refreshTrips(),1000);
 				socket.broadcast.emit('update', trips);
 			})
 	});
