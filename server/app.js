@@ -11,9 +11,9 @@ var server = require('http').createServer(app);
 var mysql      = require('mysql');
 var db = mysql.createConnection({
   host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'driveme'
+  user     : 'orion',
+  password : 'poil1234',
+  database : 'orion'
 });
 
 db.connect();
@@ -33,16 +33,16 @@ app.use(bodyParser());
 // Create a token generator with the default settings:
 var token = require('./modules/token')(app, db);
 
+// load notifications module
+var notif = require('./modules/notifications');
+
 // load routes
-var router = require('./modules/routes')(express, db, app);
+var router = require('./modules/routes')(express, db, app, notif);
 // all of our routes will be prefixed with /api/v1
 app.use('/api/v1', router);
 
 // load sockets module
 require('./modules/socket')(server, db);
-
-// load notifications module
-require('./modules/notifications.js');
 
 // Every minute, check for finished trips
 setInterval(function () {

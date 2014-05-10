@@ -259,12 +259,15 @@ D:\Program Files\wamp\www\drivin\platforms\android\assets\www\lib\restangular\di
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\lib\restangular\src\restangular.js \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\lib\restangular\test\restangularSpec.js \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\lib\socket.io\socket.io.js \
+D:\Program Files\wamp\www\drivin\platforms\android\assets\www\plugins\com.ionic.keyboard \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\plugins\com.phonegap.plugins.PushPlugin \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\plugins\org.apache.cordova.camera \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\plugins\org.apache.cordova.device \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\plugins\org.apache.cordova.file \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\plugins\org.apache.cordova.file-transfer \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\plugins\org.apache.cordova.statusbar \
+D:\Program Files\wamp\www\drivin\platforms\android\assets\www\plugins\com.ionic.keyboard\www \
+D:\Program Files\wamp\www\drivin\platforms\android\assets\www\plugins\com.ionic.keyboard\www\keyboard.js \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\plugins\com.phonegap.plugins.PushPlugin\www \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\plugins\com.phonegap.plugins.PushPlugin\www\PushNotification.js \
 D:\Program Files\wamp\www\drivin\platforms\android\assets\www\plugins\org.apache.cordova.camera\www \

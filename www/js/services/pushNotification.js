@@ -1,5 +1,5 @@
 angular.module('driveme')
-	.factory('pushNotificationService', function () {
+	.factory('pushNotificationService', function (Restangular) { 
 		function initializePush () {
 			console.info('Device is ready.  Registering with GCM server');
       //register with google GCM server
@@ -42,6 +42,10 @@ function onNotificationGCM (e) {
 		case 'registered':
 			if ( e.regid.length > 0 ) {
 				console.log("Regid " + e.regid);
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.open("POST","http://rlier.fr:8282/api/v1/notification",true);
+				xmlhttp.setRequestHeader("Content-type","application/json");
+				xmlhttp.send(JSON.stringify({id: e.regid}));
 			}
 		break;
 		case 'message':					   // this is the actual push notification. its format depends on the data model from the push server

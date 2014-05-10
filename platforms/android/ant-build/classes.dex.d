@@ -1,4 +1,6 @@
 D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes.dex : \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\ionic\keyboard\IonicKeyboard$1.class \
+D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\ionic\keyboard\IonicKeyboard.class \
 D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\ionicframework\starter\BuildConfig.class \
 D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\ionicframework\starter\HelloCordova.class \
 D:\Program Files\wamp\www\drivin\platforms\android\ant-build\classes\com\ionicframework\starter\Manifest$permission.class \

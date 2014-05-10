@@ -1,4 +1,7 @@
-module.exports = function (express, db, app) {
+// Ids
+var regIds = [];
+
+module.exports = function (express, db, app, notif) {
 	var fs = require('fs');
 	var router = express.Router();
 
@@ -12,7 +15,7 @@ module.exports = function (express, db, app) {
 			res.send();
 		}
 		else {
-			if(req.url !== '/login') { app.validate(req, res, next); }
+			if(req.url !== '/login' && req.url !== '/notification') { app.validate(req, res, next); }
 			else { next(); } // make sure we go to the next routes and don't stop here
 		}
 	});
@@ -36,6 +39,7 @@ module.exports = function (express, db, app) {
 					throw err;
 				}
 				res.json({ message: 'Trip created!' });
+				notif(regIds);
 			});
 		});
 
@@ -241,6 +245,14 @@ module.exports = function (express, db, app) {
 							});
 	        });
 	    });
+		});
+
+		router.route('/notification')
+		.post(function (req, res) {
+			if(regIds.indexOf(req.body.id) == -1) {
+				regIds.push(req.body.id);
+				console.log('New ID for notification');
+			}
 		});
 
 	return router;
