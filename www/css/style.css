@@ -5,7 +5,7 @@
 	background-image: url(../img/start-douai-background-proportion.png);
 	background-size: 100% 100%;
 }
-#start .scroll .divButton, #login .scroll .divButton {
+#start .scroll-content .divButton, #login .scroll-content .divButton {
 	position: absolute;
 	width: 100%;
 	bottom: 40%;
@@ -23,7 +23,7 @@
 .slider {
   height: 80%;
 }
-.scroll {
+.scroll-content {
 	height: 100%;
 }
 .slider-slide {
