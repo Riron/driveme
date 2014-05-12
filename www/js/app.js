@@ -1,5 +1,5 @@
 angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
-.run(function($ionicPlatform, apiService, pushNotificationService, tokenInterceptor) {
+.run(function($ionicPlatform, apiService, pushNotificationService, tokenInterceptor, userService) {
   // Ionic Init
   $ionicPlatform.ready(function() {
     if(window.StatusBar) {
@@ -14,6 +14,7 @@ angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
   apiService.init();
 
   tokenInterceptor.init();
+  userService.checkUserIsLogged("tabs.news");
 })
 .constant('API_URL', 'http://localhost:8080')
 //.constant('API_URL', 'http://rlier.fr:8282')

@@ -5,6 +5,7 @@ angular.module('driveme')
 				if(typeof token !== 'undefined')
 				{
 					$localStorage.token = token;
+					$localStorage.id = token.split(':')[0];
 				}
 				$http.defaults.headers.common['X-Access-Token'] = token || $localStorage.token;
 			}, 
