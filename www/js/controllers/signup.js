@@ -32,10 +32,6 @@ angular.module('driveme')
 		$scope.checkPassword = function(){
 			_scope=$scope;
 			$scope.userSignUp.same = $scope.userSignUp.passwordA === $scope.userSignUp.passwordB;
-			if(!$scope.userSignUp.same)
-			{
-				signUpForm.passwordB.$setValidity('pwd', false); 
-			}
 		};
 
 
