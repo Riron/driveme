@@ -1,41 +1,41 @@
 <ion-view title="Sign Up" id="signUp">
   <ion-content scroll="false">
-    <div class="divButton">
+    <form class="divButton" name="signUpForm" role="form">
       <div class="list list-inset">
         <label class="item item-input">
-          <span class="input-label">Prénom</span>
-          <input type="text">
+          <span class="input-label" >Prénom</span>
+          <input type="text" name="firstname" ng-model="userSignUp.firstname" ng-required="true" ng-minlength="3" ng-change="change()">
         </label>
       </div>
       <div class="list list-inset">
         <label class="item item-input">
           <span class="input-label">Nom</span>
-          <input type="text">
+          <input type="text" name="lastname" ng-model="userSignUp.lastname" ng-required="true" ng-minlength="3" ng-change="change()">
         </label>
       </div>
       <div class="list list-inset">
         <label class="item item-input">
           <span class="input-label">Username</span>
-          <input type="text" ng-readonly="true">
+          <input type="text" ng-readonly="true" ng-model="userSignUp.username">
         </label>
       </div>
       <div class="list list-inset">
         <label class="item item-input">
           <span class="input-label">Mot de passe</span>
-          <input type="password">
+          <input type="password" name="passwordA" ng-model="userSignUp.passwordA" ng-required="true" ng-change="checkPassword()">
         </label>
       </div>
       <div class="list list-inset">
         <label class="item item-input">
-          <span class="input-label">Vérification Mot de passe</span>
-          <input type="password">
+          <span class="input-label">Retaper mot de passe</span>
+          <input type="password" name="passwordB" id="passwordB" ng-model="userSignUp.passwordB" ng-required="true" ng-change="checkPassword()">
         </label>
       </div>
       <div class="padding">
-        <button class="button button-block button-positive" ng-click="login()">
+        <button class="button button-block button-positive" ng-click="" ng-disabled="signUpForm.firstname.$invalid">
           Sign Up
         </button>
       </div>
-    </div>
+    </form>
   </ion-content>
 </ion-view>
