@@ -15,7 +15,7 @@ module.exports = function (express, db, app, notif) {
 			res.send();
 		}
 		else {
-			if(req.url !== '/login' && req.url !== '/notification') { app.validate(req, res, next); }
+			if(req.url !== '/signUp' && req.url !== '/login' && req.url !== '/notification') { app.validate(req, res, next); }
 			else { next(); } // make sure we go to the next routes and don't stop here
 		}
 	});
@@ -48,21 +48,76 @@ module.exports = function (express, db, app, notif) {
 			res.json({succes :"ok"});
 		});
 
+	router.route('/signUp')
+		.post(function (req, res) {
+			var user = req.body;
+			/// Test si l'username est valide et les mots de passe correspondent
+			if(user.username === user.firstname+'.'+user.lastname && user.passwordA === user.passwordB)
+			{
+				var query = 'SELECT id FROM user WHERE username ='+ db.escape(user.username) +' and password = '+ db.escape(user.passwordA);
+				console.log(query);
+				db.query(query, function(err, rows) 
+				{
+					console.log('resultat select : ', rows);
+					if(rows.length === 0)
+					{
+						var queryInsert = 'INSERT INTO user( username, password, email, phone, car, musicType, promo, room, picture) VALUES ("'+user.username+ '","' + user.passwordA+ '","'+user.username+'@minesdedouai.fr","","","","","","" )';
+						db.query(queryInsert, function(errr, rows) {
+							if(errr)
+							{
+								console.log('erreur lors de l insert');
+								res.send(
+									{
+										message : "Erreur technique, veuillez réessayer plus tard ! ",
+										error : errr,
+									}
+								);
+							}
+							else
+							{
+								var token = app.generateToken(rows.insertId, Date.now()+app.get('token age'));
+								console.log(token);
+								res.json(
+									{
+										token: token,
+									}
+								);
+							}
+						});
+					}
+					else
+					{
+						res.send(
+							{
+								message : "Username existe déjà !",
+								error : err,
+							}
+						);
+					}
+				});
+
+			}
+			else
+			{
+				console.log(" données incorrectes");
+				res.send(
+				{
+					message : "Erreur les données ne sont pas les mêmes - Veuillez vérifiez que tout est correct",
+				});
+			}
+		});
+
 	router.route('/login')
 		.post(function (req, res) {
-
-			console.log('log start');
 			var query = 'SELECT id FROM user WHERE username ='+ db.escape(req.body.login) +' and password = '+ db.escape(req.body.password);
-			console.log(query);
 			db.query(query, function(err, rows) {
 				if(err) {
 					res.send(err);
-					throw err;
 				}
 				else if(rows.length === 1){
 					var token = app.generateToken(rows[0].id, Date.now()+app.get('token age'));
 					console.log(token);
-					res.json({token: token})
+					res.json({token: token});
 				}
 				else{
 					res.json({error:'KO'});

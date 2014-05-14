@@ -1,7 +1,5 @@
-var test;
-var _scope;
 angular.module('driveme')
-	.controller('SignUpCtrl', function ($scope, $state) 
+	.controller('SignUpCtrl', function ($scope, $state, userService) 
 	{
 		$scope.userSignUp = 
 			{
@@ -12,7 +10,6 @@ angular.module('driveme')
 				passwordB : "",
 				same : "false",
 			};
-		test = $scope.userSignUp;
 
 		$scope.change = function(){
 			var firstname = '';
@@ -30,12 +27,11 @@ angular.module('driveme')
 		};
 
 		$scope.checkPassword = function(){
-			_scope=$scope;
 			$scope.userSignUp.same = $scope.userSignUp.passwordA === $scope.userSignUp.passwordB;
 		};
 
-
-
-
+		$scope.signUp = function(){
+			userService.signUp($scope.userSignUp);
+		};
 
 	});

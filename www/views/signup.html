@@ -2,37 +2,43 @@
   <ion-content scroll="false">
     <form class="divButton" name="signUpForm" role="form">
       <div class="list list-inset">
-        <label class="item item-input">
+        <label class="item item-input" ng-class="{errorBorder:(signUpForm.firstname.$dirty && signUpForm.firstname.$invalid), validBorder :  (signUpForm.firstname.$dirty && !signUpForm.firstname.$invalid)}">
           <span class="input-label" >Prénom</span>
           <input type="text" name="firstname" ng-model="userSignUp.firstname" ng-required="true" ng-minlength="3" ng-change="change()">
         </label>
+        <span class="error" ng-show="signUpForm.firstname.$dirty && signUpForm.firstname.$invalid">Le prénom nécéssite au minimum 3 caractères</span>
       </div>
       <div class="list list-inset">
-        <label class="item item-input">
+        <label class="item item-input" ng-class="{errorBorder:(signUpForm.lastname.$dirty && signUpForm.lastname.$invalid), validBorder :  (signUpForm.lastname.$dirty && !signUpForm.lastname.$invalid)}">
           <span class="input-label">Nom</span>
           <input type="text" name="lastname" ng-model="userSignUp.lastname" ng-required="true" ng-minlength="3" ng-change="change()">
         </label>
+        <span class="error" ng-show="signUpForm.lastname.$dirty && signUpForm.lastname.$invalid">Le nom nécéssite au minimum 3 caractères</span>
       </div>
       <div class="list list-inset">
-        <label class="item item-input">
+        <label class="item item-input" ng-class="{errorBorder:((signUpForm.firstname.$dirty || signUpForm.lastname.$dirty) && (signUpForm.firstname.$invalid || signUpForm.lastname.$invalid)), validBorder :signUpForm.firstname.$dirty && signUpForm.lastname.$dirty && !signUpForm.lastname.$invalid && !signUpForm.firstname.$invalid}">
           <span class="input-label">Username</span>
           <input type="text" ng-readonly="true" ng-model="userSignUp.username">
         </label>
+        <span class="error" ng-show="((signUpForm.firstname.$dirty || signUpForm.lastname.$dirty) && (signUpForm.firstname.$invalid || signUpForm.lastname.$invalid))">Les champs Prénom & Nom sont nécéssaires pour former votre Username</span>
+        <span class="success" ng-show="signUpForm.firstname.$dirty && signUpForm.lastname.$dirty && !signUpForm.lastname.$invalid && !signUpForm.firstname.$invalid">Souvenez-vous de votre Username</span>
+        <span class="success" ng-show="signUpForm.firstname.$dirty && signUpForm.lastname.$dirty && !signUpForm.lastname.$invalid && !signUpForm.firstname.$invalid">Il provient de la concaténation de votre prénom et votre nom séparé par un point</span>
       </div>
       <div class="list list-inset">
-        <label class="item item-input">
+        <label class="item item-input" ng-class="{validBorder: (signUpForm.passwordB.$dirty && userSignUp.same)}">
           <span class="input-label">Mot de passe</span>
           <input type="password" name="passwordA" ng-model="userSignUp.passwordA" ng-required="true" ng-change="checkPassword()">
         </label>
       </div>
       <div class="list list-inset">
-        <label class="item item-input">
+        <label class="item item-input" ng-class="{errorBorder: (signUpForm.passwordB.$dirty && !userSignUp.same), validBorder: (signUpForm.passwordB.$dirty && userSignUp.same)}">
           <span class="input-label">Retaper mot de passe</span>
           <input type="password" name="passwordB" id="passwordB" ng-model="userSignUp.passwordB" ng-required="true" ng-change="checkPassword()">
         </label>
+        <span class="error" ng-show="signUpForm.passwordB.$dirty && !userSignUp.same">Les mots de passe doivent correspondre</span>
       </div>
       <div class="padding">
-        <button class="button button-block button-positive" ng-click="" ng-disabled="signUpForm.firstname.$invalid || !userSignUp.same">
+        <button class="button button-block button-positive" ng-disabled="signUpForm.firtname.$error.required || signUpForm.lastname.$error.required || signUpForm.passwordA.$error.required ||signUpForm.passwordB.$error.required || signUpForm.lastname.$invalid || signUpForm.lastname.$invalid || signUpForm.firstname.$invalid || !userSignUp.same" ng-click="signUp()">
           Sign Up
         </button>
       </div>

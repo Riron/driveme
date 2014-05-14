@@ -2,7 +2,7 @@ angular.module('driveme')
 	.controller('StartCtrl', function ($scope, $state, userService) {
 
 		$scope.logIn = function() {
-			userService.checkUserIsLogged("tabs.news");
+			userService.checkUserIsLogged("tabs.news", false);
 		};
 
 		$scope.signUp = function() {

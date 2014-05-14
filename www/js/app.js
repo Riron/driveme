@@ -14,7 +14,7 @@ angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
   apiService.init();
 
   tokenInterceptor.init();
-  userService.checkUserIsLogged("tabs.news");
+  userService.checkUserIsLogged("tabs.news", true);
 })
 .constant('API_URL', 'http://localhost:8080')
 //.constant('API_URL', 'http://rlier.fr:8282')

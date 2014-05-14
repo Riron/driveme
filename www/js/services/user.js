@@ -12,7 +12,7 @@ angular.module('driveme')
 			isLogged: function() {
         		return user.isLogged;
       		},
-      		checkUserIsLogged: function(redirectionIfLogged){
+      		checkUserIsLogged: function(redirectionIfLogged, firstStart){
       			if( typeof $localStorage.token !== "undefined")
       			{
 					Restangular.all('loginWithToken').post()
@@ -27,7 +27,10 @@ angular.module('driveme')
 					});
 				}
 				else{
-					$state.go('login');
+					if(!firstStart)
+					{
+						$state.go('login');
+					}
 					user.isLogged = false;
 					return user.isLogged;
 				}
@@ -46,6 +49,28 @@ angular.module('driveme')
 				}, function(res) {
 					alert("Le service à retourné une erreur. Veuillez vérifier que vous avez bien accès à internet");
   				});
+			},
+			signUp : function(newUser){
+				console.log('coucou signUp');
+				Restangular.all('signUp').post(newUser)
+				.then(function(res){
+					//success
+					console.log('new user success', res);
+					if(typeof res.token !== 'undefined')
+					{
+						apiService.init(res.token);
+						$state.go('tabs.news');
+					}
+					else
+					{
+						// Alors il y a eu un problème lors des vérifications côté serveur avec le message suivant
+						alert(res.message);
+					}
+				}, function(res){
+					//fail
+					console.log('new user fail', res);
+					alert("Le service à retourné une erreur. Veuillez vérifier que vous avez bien accès à internet");
+				});
 			},
 			logout: function () {
 				user.isLogged = false;

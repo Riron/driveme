@@ -18,6 +18,25 @@
 #signUp .list-inset span{
 	display: block;
 }
+#signUp .list-inset span.error{
+	text-align: center;
+	color: #F00;
+	font-weight: bolder;
+}
+#signUp .list-inset span.success{
+	text-align: center;
+	color: green;
+	font-weight: bolder;
+}
+#signUp .list-inset {
+	background-color: rgba(0, 0, 0, 0);
+}
+.errorBorder {
+	border: 2px solid red;
+}
+.validBorder {
+	border: 2px solid green;
+}
 #start button {
 	display: block;
 	width: 80%;
