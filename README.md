@@ -18,6 +18,17 @@ En plus de ça, chacun disposera d'un profil utilisateur basé sur ses identifia
 
 Un système de news est également implémenté pour permettre aux étudiants d'accéder rapidement à toutes les infos concernant leur campus.
 
+Utilisation
+-----------
+
+Pour utiliser l'application **vous devez être connecté à internet**.
+
+Le username est la concaténation du prénom et du nom, reliés par un point. En effet cette syntaxe suit celle utilisée pour les comptes élèves Mines Douai.
+
+Pour toute question ou problème, n'hésitez pas à nous contacter sur l'adresse orioncharlier@gmail.com ou jbbeuzelin@gmail.com. En effet, notre application repose sur un serveur (API REST) hébergé chez nous, et il se peut qu'il se déconnecte par moment. Si besoin nous interviendrons donc pour le rétablir dans les plus brefs délais.
+
+En vous souhaitant une bonne utilisation !
+
 Technologies
 -----------
 

@@ -52,7 +52,7 @@ module.exports = function (express, db, app, notif) {
 		.post(function (req, res) {
 			var user = req.body;
 			/// Test si l'username est valide et les mots de passe correspondent
-			if(user.username === user.firstname+'.'+user.lastname && user.passwordA === user.passwordB)
+			if(user.username === user.firstname.toLowerCase()+'.'+user.lastname.toLowerCase() && user.passwordA === user.passwordB)
 			{
 				var query = 'SELECT id FROM user WHERE username ='+ db.escape(user.username) +' and password = '+ db.escape(user.passwordA);
 				console.log(query);
@@ -61,7 +61,7 @@ module.exports = function (express, db, app, notif) {
 					console.log('resultat select : ', rows);
 					if(rows.length === 0)
 					{
-						var queryInsert = 'INSERT INTO user( username, password, email, phone, car, musicType, promo, room, picture) VALUES ("'+user.username+ '","' + user.passwordA+ '","'+user.username+'@minesdedouai.fr","","","","","","" )';
+						var queryInsert = 'INSERT INTO user( username, password, email, phone, car, musicType, promo, room, picture) VALUES ("'+user.username+ '","' + user.passwordA+ '","'+user.username+'@minesdedouai.fr","","","","","","http://lorempixel.com/50/50/people/" )';
 						db.query(queryInsert, function(errr, rows) {
 							if(errr)
 							{

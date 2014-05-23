@@ -16,8 +16,8 @@ angular.module('driveme', ['ionic', 'restangular', 'ngStorage'])
   tokenInterceptor.init();
   userService.checkUserIsLogged("tabs.news", true);
 })
-.constant('API_URL', 'http://localhost:8080')
-//.constant('API_URL', 'http://rlier.fr:8282')
+//.constant('API_URL', 'http://localhost:8080')
+.constant('API_URL', 'http://rlier.fr:8282')
 .config(function($stateProvider, $urlRouterProvider, RestangularProvider, API_URL) {
   // Configure Restangular base route
   RestangularProvider.setBaseUrl(API_URL + '/api/v1');

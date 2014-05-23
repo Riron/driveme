@@ -16,14 +16,14 @@ angular.module('driveme')
 			var lastname = '';
 			if(typeof $scope.userSignUp.firstname !== 'undefined')
 			{
-				firstname =$scope.userSignUp.firstname;
+				firstname = $scope.userSignUp.firstname;
 			}
 			if(typeof $scope.userSignUp.lastname !== 'undefined')
 			{
 				lastname = $scope.userSignUp.lastname;
 			}
 			var point = (firstname !== "" || lastname !== "") ? "." : "" ;
-			$scope.userSignUp.username = firstname +point+lastname;
+			$scope.userSignUp.username = firstname.toLowerCase() + point + lastname.toLowerCase();
 		};
 
 		$scope.checkPassword = function(){

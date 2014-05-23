@@ -59,7 +59,7 @@ angular.module('driveme')
 					if(typeof res.token !== 'undefined')
 					{
 						apiService.init(res.token);
-						$state.go('tabs.news');
+						$state.go('intro');
 					}
 					else
 					{

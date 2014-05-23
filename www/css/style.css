@@ -13,7 +13,7 @@
 #signUp .scroll-content .divButton {
 	position: absolute;
 	width: 100%;
-	bottom: 30%;
+	bottom: 0%;
 }
 #signUp .list-inset span{
 	display: block;
@@ -49,9 +49,6 @@
 }
 .slider {
   height: 80%;
-}
-.scroll-content {
-	height: 100%;
 }
 .slider-slide {
   padding-top: 60px;

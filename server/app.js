@@ -11,20 +11,20 @@ var server = require('http').createServer(app);
 var mysql      = require('mysql');
 
 //Prod db 
-/*var db = mysql.createConnection({
+var db = mysql.createConnection({
   host     : 'localhost',
   user     : 'rot',
   password : 'poil1234',
   database : 'orion'
-});*/
+});
 
 // Local db
-var db = mysql.createConnection({
+/*var db = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
   database : 'driveme'
-});
+});*/
 
 db.connect();
 

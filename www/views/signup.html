@@ -1,4 +1,4 @@
-<ion-view title="Sign Up" id="signUp">
+<ion-view title="Inscription" id="signUp">
   <ion-content scroll="false">
     <form class="divButton" name="signUpForm" role="form">
       <div class="list list-inset">
@@ -32,14 +32,14 @@
       </div>
       <div class="list list-inset">
         <label class="item item-input" ng-class="{errorBorder: (signUpForm.passwordB.$dirty && !userSignUp.same), validBorder: (signUpForm.passwordB.$dirty && userSignUp.same)}">
-          <span class="input-label">Retaper mot de passe</span>
+          <span class="input-label">Retaper</span>
           <input type="password" name="passwordB" id="passwordB" ng-model="userSignUp.passwordB" ng-required="true" ng-change="checkPassword()">
         </label>
         <span class="error" ng-show="signUpForm.passwordB.$dirty && !userSignUp.same">Les mots de passe doivent correspondre</span>
       </div>
       <div class="padding">
         <button class="button button-block button-positive" ng-disabled="signUpForm.firtname.$error.required || signUpForm.lastname.$error.required || signUpForm.passwordA.$error.required ||signUpForm.passwordB.$error.required || signUpForm.lastname.$invalid || signUpForm.lastname.$invalid || signUpForm.firstname.$invalid || !userSignUp.same" ng-click="signUp()">
-          Sign Up
+          S'inscrire
         </button>
       </div>
     </form>
